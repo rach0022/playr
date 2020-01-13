@@ -41,6 +41,10 @@ main {
 #songlist {
   background-color: #ccebad;
 }
+#songlist .header {
+  position: absolute;
+  top: 0;
+}
 
 #currentsong {
   background-color: #ebebad;
