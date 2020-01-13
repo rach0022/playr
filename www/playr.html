@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Security-Policy" content="
-        default-src https://use.fontawesome.com/releases/v5.0.8/ 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; 
+        default-src https://use.fontawesome.com/releases/v5.0.8/ 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; 
         style-src https://use.fontawesome.com/releases/v5.0.8/css/all.css  'self' 'unsafe-inline'; 
         media-src *; 
         img-src 'self' data: content:;">
@@ -14,9 +14,21 @@
     <title>RACH0022-PLAYR</title>
 </head>
 <body>
-    
-    <p><i class="fab fa-facebook"></i></p>
+    <main>
+        <div id="songlist" class="page active">
+            <div class="header">
+                Android PLAYR APP by <em>RACH0022</em>
+            </div>
+            <a href="#currentsong" data-href="currentsong">Current Song</a>
+            <head></head>
+        </div>
+        <div id="currentsong" class="page">
+            <a href="#songlist" data-href="songlist">Song List</a>
+        </div>
+    </main>
+    <!-- <p><i class="fab fa-facebook"></i></p> -->
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>   
+    <script src="js/main.js"></script> 
 </body>
 </html>
