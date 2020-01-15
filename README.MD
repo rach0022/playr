@@ -6,7 +6,8 @@
 - [x] Content Security policy and links to CDN for FontAwesome etc.
 - [ ] Pick some fonts from Google Fonts to user for the program
 - [ ] create an x-icon to use for this page
-- [ ] Each of the entries in the playlist should show a title, an artist, and a thumbnail image that represents the audio file
+- [x] Each of the entries in the playlist should show a title, an artist
+- [ ] thumbnail image that represents the audio file, typically the album cover
 - [ ] Nothing plays by default when the app loads
 - [ ] The user will have to tap on an item in the list to play
 - [ ] When an audio file reaches its end, the next item in the list should play
