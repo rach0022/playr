@@ -41,6 +41,13 @@ main {
 #songlist {
   background-color: #ccebad;
 }
+#songlist #songs {
+  display: flex;
+  font-size: 16px;
+}
+#songlist #songs .song {
+  padding: 10px;
+}
 #songlist .header {
   position: absolute;
   top: 0;
@@ -48,6 +55,10 @@ main {
 
 #currentsong {
   background-color: #ebebad;
+}
+#currentsong .header {
+  position: absolute;
+  top: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
