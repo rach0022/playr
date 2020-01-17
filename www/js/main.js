@@ -5,6 +5,9 @@ const APP = {
     active: null,
     pages: [],
     baseURL: null,
+    currentTrack: null,
+    currentPosition: 0,
+    tickerPosition: 0,
     audio: [
         {
             id: 343,
@@ -52,12 +55,21 @@ const APP = {
         APP.pages = document.querySelectorAll(".page");
         console.log(APP.pages);
         let links = document.querySelectorAll("[data-href]");
+        
+
+        //start of adding click listeners to the
+        //differnt elemnents on the page
         links.forEach(link => {
             link.addEventListener("click", APP.nav);
         });
 
+
+
         //initialize the song list with the songs in our song array
         APP.music_init(APP.audio);
+
+        //test timer for the progress bar
+        let progress_animation = setInterval(APP.progressBar, 100, null);
     },
     nav: ev => {
         ev.preventDefault();
@@ -112,10 +124,56 @@ const APP = {
             entry.appendChild(album);
             entry.appendChild(duration);
 
+            //add the event listeners for the entry objevts
+            entry.addEventListener('click', APP.buildSongPage);
+
             frag.appendChild(entry); 
         })
         songs.appendChild(frag);
 
+    },
+
+    //function to create songs based on which song is clicked
+    //will use a click listerner to give an input event and
+    //use this function as a callback'
+    //this event will change to play song or
+    //become a helper event to the play song event
+    buildSongPage: ev => {
+        console.log(ev.currentTarget.getAttribute("data-songid"));
+        let song_choice = APP.audio.find(entry => {
+            return entry.id == ev.currentTarget.getAttribute("data-songid");
+        });
+        console.log(song_choice);
+        APP.currentTrack = song_choice;
+
+        APP.showPage('currentsong');
+
+        //find the title and put the song title
+        document.querySelector('h3#title').textContent= song_choice.track;
+    },
+
+
+    //function to animate progress bars based on the current postion in teh music
+    //for now input parameters are just not used just becuase timer is testing
+    progressBar: song =>{
+        let bar = document.querySelector('.currentstatus');
+        APP.currentPosition += 1;
+
+        bar.style.width = `${APP.currentPosition}%`
+
+        if(APP.currentPosition >= 100){
+            APP.currentPosition = 0;
+        }
+
+        //begins testing for ticker animation for text info
+        let ticker = document.querySelector('.ticker');
+        let tickerText = `SONG: ${APP.currentTrack.track} ALBUM: ${APP.currentTrack.album} ARTIST: ${APP.currentTrack.artist}`
+        APP.tickerPosition ++;
+        ticker.textContent = tickerText.substring(APP.tickerPosition) + tickerText.substring(0, APP.tickerPosition);
+        if(APP.tickerPosition >= tickerText.length){
+            APP.tickerPosition = 0;
+        }
+        // console.log(tickerText);
     }
 
 };

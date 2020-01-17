@@ -60,5 +60,44 @@ main {
   position: absolute;
   top: 0;
 }
+#currentsong .controls {
+  padding: 10px;
+  text-align: center;
+  align-items: center;
+}
+#currentsong .controls .progressbar {
+  width: 100%;
+  height: 20px;
+  background: red;
+}
+#currentsong .controls .progressbar .currentstatus {
+  width: 20%;
+  background: blue;
+  height: 100%;
+}
+#currentsong .controls .poster {
+  padding: 10px;
+}
+#currentsong .controls .poster .ticker {
+  width: 100px;
+  height: 35px;
+  margin-bottom: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#currentsong .controls .volume-controls {
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  left: 200px;
+  top: -100px;
+}
+#currentsong .controls .playback-controls {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 50px;
+  width: 100%;
+}
 
 /*# sourceMappingURL=style.css.map */

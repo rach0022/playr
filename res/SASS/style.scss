@@ -58,4 +58,57 @@ main {
         position: absolute;
         top: 0
     }
+    .controls{
+        padding: 10px;
+        text-align: center;
+        align-items: center;
+        //start of the css for the progress bar
+        .progressbar{
+            width: 100%;
+            height: 20px;
+            background: red;
+
+            .currentstatus{
+                width: 20%;
+                background: blue;
+                height: 100%;
+            }
+        }
+
+        .poster{
+            padding: 10px;
+            .ticker{
+                width: 100px;
+                height: 35px;
+                margin-bottom: 100px;
+                overflow: hidden;
+
+
+                //this method to fix this was taken from
+                //https://stackoverflow.com/questions/7546389/css-overflow-only-1-line-of-text
+                white-space: nowrap;
+            }
+        }
+        //start of css for volume controls
+        .volume-controls{
+            display: flex;
+            flex-flow: column nowrap;
+
+            //positioning for volume controls
+            position: relative;
+            left: 200px;
+            top: -100px;
+        }
+        .playback-controls{
+            display: flex;
+            justify-content: space-between;
+
+            //postioning for playback fcontrols (play pause forward backward)
+            position: relative;
+            top: 50px;
+
+            //sizing for the playback controls container
+            width: 100%;
+        }
+    }
 }

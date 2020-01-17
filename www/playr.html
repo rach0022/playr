@@ -22,23 +22,38 @@
             <div id="songs">
                 <!-- this is the output off all the songs from the song array  -->
             </div>
-            <a href="#currentsong" data-href="currentsong">Current Song</a>
+            <a href="#currentsong" data-href="currentsong">Current Song <i class="fas fa-chevron-up"></i></a>
         </div>
         <div id="currentsong" class="page">
             <div class="header">
-                <h3>Current Song: </h3>
+                <h3 id="title">Current Song: </h3>
             </div>
-            
-            <a href="#"><i class="fas fa-music"></i></a>
-            <a href="#"><i class="fas fa-play"></i></a>
-            <a href="#"><i class="fas fa-pause"></i></a>
-            <a href="#"><i class="fas fa-step-forward"></i></a>
-            <a href="#"><i class="fas fa-step-backward"></i></a>
-            <a href="#"><i class="fas fa-volume-up"></i></a>
-            <a href="#"><i class="fas fa-volume-down"></i></a>
-            <a href="#"><i class="fas fa-chevron-down"></i></a>
-            <a href="#"><i class="fas fa-chevron-up"></i></a>
-            <a href="#songlist" data-href="songlist">Song List</a>
+            <div class="controls">
+                <div class="poster">
+                    <a href="#"><i class="fas fa-music"></i></a>
+                    <div class="ticker"></div>
+                </div>
+
+                <!-- this is the progress bar div that will move while the song plays  -->
+                <div class="progressbar">
+                    <div class="currentstatus"></div>
+                </div>
+
+                <!-- start of media controls like play pause volume forward and backward  -->
+                <div class="playback-controls">
+                    <a href="#"><i class="fas fa-play"></i></a>
+                    <a href="#"><i class="fas fa-pause"></i></a>
+                    <a href="#"><i class="fas fa-step-forward"></i></a>
+                    <a href="#"><i class="fas fa-step-backward"></i></a>
+                </div>
+                
+                <div class="volume-controls">
+                    <a href="#"><i class="fas fa-volume-up"></i></a>
+                    <a href="#"><i class="fas fa-volume-down"></i></a>
+                </div>
+
+            </div>
+            <a href="#songlist" class="link" data-href="songlist">Song List <i class="fas fa-chevron-down"></i></a>
 
             
         </div>
