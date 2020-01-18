@@ -9,10 +9,10 @@
 - [x] Each of the entries in the playlist should show a title, an artist
 - [ ] thumbnail image that represents the audio file, typically the album cover
 - [ ] Nothing plays by default when the app loads
-- [ ] The user will have to tap on an item in the list to play
+- [x] (SORTA)The user will have to tap on an item in the list to play
 - [ ] When an audio file reaches its end, the next item in the list should play
-- [ ] Create an Object that contains all the information about the audio files
-- [ ] Minimum of 5 songs in the playlist, from a minimum of two artists. Store all the audio files in a media folder inside the www folder.
+- [x] Create an Object that contains all the information about the audio files
+- [x] Minimum of 5 songs in the playlist, from a minimum of two artists. Store all the audio files in a media folder inside the www folder.
 - [ ] User should be able to click on another item in the list to start it playing. This will stop the current one playing. Use a global property to hold the media object that is playing the audio.
 - [ ] The user should be able to pause and resume the playback of the current song.
 - [ ] There should be some visual indication when a song is playing.
