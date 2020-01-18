@@ -51,7 +51,7 @@ const APP = {
         }
     ],
     init: () => {
-        app.active = document.querySelector(".active");
+        APP.active = document.querySelector(".active");
         APP.pages = document.querySelectorAll(".page");
         console.log(APP.pages);
         let links = document.querySelectorAll("[data-href]");
