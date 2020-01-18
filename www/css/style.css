@@ -79,7 +79,7 @@ main {
   padding: 10px;
 }
 #currentsong .controls .poster .ticker {
-  width: 100px;
+  width: 200px;
   height: 35px;
   margin-bottom: 100px;
   overflow: hidden;
