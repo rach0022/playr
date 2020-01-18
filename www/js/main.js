@@ -1,11 +1,52 @@
+/*************************
+ *
+ *  @description Android media player app called PLAYR built using cordova 
+ *
+ *  @author Ravi Chandra Rachamalla rach0022@algonquinlive.com
+ *
+ *  @version Jan 18, 2020
+ *
+ ***********************/
+
 //starter code was taken from the simple spa demo from MAD9014
 //https://prof3ssorst3v3.github.io/simple-spa-demo/#green
 
 const APP = {
+
+    //the active and pages variables are used
+    //to change the page and store which page we are currently on
     active: null,
     pages: [],
-    baseURL: null,
+
+    //base url for the filepath to the song assets in the www/media folder
+    //volume is used to store the value of the current volume level for the PLAYR app
+    //default volume for the app is 50% or 0.5
+    baseURL: 'file:///android_asset/www/media/',
+    volume: 0.5,
+    
+    //the media object 'currentTrack' used by the cordova media plugin
+    //also the 'status' and 'err' object are used to understand the different status
+    //and error codes given back by the cordova media plugin
     currentTrack: null,
+    status: {
+        '0': 'MEDIA_NONE',
+        '1': 'MEDIA_STARTING',
+        '2': 'MEDIA_RUNNING',
+        '3': 'MEDIA_PAUSED',
+        '4': 'MEDIA_STOPPED'
+    },
+    err:{
+        '1': 'MEDIA_ERR_ABORTED',
+        '2': 'MEDIA_ERR_NETWORK',
+        '3': 'MEDIA_ERR_DECODE',
+        '4': 'MEDIA_ERR_NONE_SUPPORTED'
+    },
+
+    //'currentposition' is used for the current position of the media file,
+    //might switch to using just the function from the cordova media plugin
+    //the use will be for incrementing the progress bar in time with the current song
+    //playing, 'tickerposition' is used to move the ticker text displaying the song information
+    //in the current playing screen of the song
     currentPosition: 0,
     tickerPosition: 0,
     audio: [
@@ -15,7 +56,7 @@ const APP = {
             track: "Invalid Letter Dept.",
             album: "Relationship of Command",
             length: 0,
-            path: "media/at-the-drive-in/invalid_letter_dept.mp3"
+            path: "at-the-drive-in/invalid_letter_dept.mp3"
         },
         {
             id: 344,
@@ -23,7 +64,7 @@ const APP = {
             track: "One Armed Scissor",
             album: "Relationship of Command",
             length: 0,
-            path: "media/at-the-drive-in/one_armed_scissor.mp3"
+            path: "at-the-drive-in/one_armed_scissor.mp3"
         },
         {
             id: 434,
@@ -31,7 +72,7 @@ const APP = {
             track: "Electric Feel",
             album: "Oracular Spectacular",
             length: 0,
-            path: "media/mgmt/electric_feel.mp3"
+            path: "mgmt/electric_feel.mp3"
         },
         {
             id: 842,
@@ -39,7 +80,7 @@ const APP = {
             track: "Stay Useless",
             album: "Attack on Memory",
             length: 0,
-            path: "media/cloud-nothings/stay-useless.mp3"
+            path: "cloud-nothings/stay-useless.mp3"
         },
         {
             id: 843,
@@ -47,7 +88,7 @@ const APP = {
             track: "Fall In",
             album: "Attack on Memory",
             length: 0,
-            path: "media/cloud-nothings/fall-in.mp3"
+            path: "cloud-nothings/fall-in.mp3"
         }
     ],
     init: () => {
@@ -174,6 +215,111 @@ const APP = {
             APP.tickerPosition = 0;
         }
         // console.log(tickerText);
+    },
+
+    //Starting of the callback functions used
+    //for the cordova media plugin that are bound to the click
+    //event of the buttons the code for the functions are all based on the
+    //the codejist provided in the cordova video link: https://www.youtube.com/watch?v=Fk-DpOnuvmM&feature=emb_title
+
+    //the success callback fucntion for the cordova media plugin
+    mediaSuccess: function() {
+        console.log(`System was successful is loading the media object`);
+    },
+
+    //the failure callback function for the cordova media plugin
+    mediaFailure: err => {
+        //for now I am using console.log statements to warn me of the errors
+        //should change these methods to warning the user with alerts or popups
+        //in order to inform them of a failure and a status code
+        console.warn(`Failure in loading of the Song Specified`);
+        console.error(err);
+        
+    },
+
+    //the change of status callback fucntion for the cordova media object
+    mediaStatusChange: status => {
+        //this is the fucntion that will be called when the status is changed
+        //for now I am just using console.log statements but should change later 
+        //to display the information to the user with a kick popup or flash some text
+        console.log(`media status is now ${APP.status[status]}`);
+    },
+
+    //the function to play a song using cordova media plugin
+    play: function(){
+        APP.currentTrack.play();
+    },
+
+    //the function to pause a song using cordova media plugin
+    pause: function() {
+        APP.mediaFailure.pause();
+    },
+
+    //the volume up function, will check the current volume
+    //and increase accordingly
+    volumeUp: function() {
+        //currently printing out the volume info in the console
+        //need to change to also display this info to the user with dialog box
+        //volume goes up in increments of 1 from 0 to 10 so i could use a slider
+        console.log(`CURRENT VOLUME LEVEL: ${APP.volume}`);
+
+        APP.volume += 0.1;
+        if(APP.volume > 1) APP.volume = 1.0;
+        console.log(APP.volume);
+        APP.currentTrack.setVolume(APP.volume);
+    },
+
+    //the volume down function, works exactly liek above
+    //except in reverse
+    volumeDown: function() {
+        //currently printing out the volume info in the console
+        //need to change to also display this info to the user with dialog box
+        //volume goes up in increments of 1 from 0 to 10 so i could use a slider
+        console.log(`CURRENT VOLUME LEVEL: ${APP.volume}`);
+
+        APP.volume -= 0.1;
+        if(APP.volume < 0) APP.volume = 0;
+        console.log(APP.volume);
+        APP.currentTrack.setVolume(APP.volume);
+    },
+
+    //the fast forward function for the PLAYR app
+    //it will skip the song by increments of 10s
+    fastforward: function() {
+        //for now we are displaying the fact the song changed only to the 
+        //console, should change to give some output to the user to give a 
+        //visual confirmation the track audio was fast forwarded
+        APP.currentTrack.getCurrentPosition(position =>{
+            let duration = APP.currentTrack.getDuration();
+            console.log(`CURRENT SONG POSITION: ${position}`);
+            console.log(`CURRENT SONG DURATION: ${duration}`);
+
+            //adding ten seconds to the positon then setting that value
+            position += 10; 
+            if(position < duration) APP.currentTrack.seekTo(position*1000);
+        });
+    },
+
+    //the rewind call back function
+    //it will go back by increments of ten seconds and is very similar
+    //to the above fast forward function
+    rewind: function(){
+        //for now we only display the information to the console
+        //later on we could try and make the buttons shake to give
+        //a visual queue that this operation was successful
+
+        APP.currentTrack.getCurrentPosition(position =>{
+            //subtract ten from the position to 
+            //later then go back ten secodns
+            position -= 10;
+            if(position > 0 ){
+                //if the position was properly set
+                APP.currentTrack.seekTo(position*1000);
+            } else {
+                //if the position set is less then 0
+                APP.currentTrack.seekTo(0);
+            }
+        });
     }
 
 };
