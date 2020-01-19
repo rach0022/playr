@@ -4,11 +4,12 @@
 
 ### Features to Work on (REQUIREMENTS):
 - [x] Content Security policy and links to CDN for FontAwesome etc.
-- [ ] Pick some fonts from Google Fonts to user for the program
-- [ ] create an x-icon to use for this page
+- [x] Pick some fonts from Google Fonts to user for the program (Play and Roboto-Slab)
+- [x] create an x-icon to use for this page
 - [x] Each of the entries in the playlist should show a title, an artist
 - [ ] thumbnail image that represents the audio file, typically the album cover
 - [ ] Nothing plays by default when the app loads
+- [x] Choose a Color Scheme that the APP follows | Generated from colormind.io
 - [x] (SORTA)The user will have to tap on an item in the list to play
 - [ ] When an audio file reaches its end, the next item in the list should play
 - [x] Create an Object that contains all the information about the audio files
