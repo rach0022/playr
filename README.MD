@@ -7,13 +7,13 @@
 - [x] Pick some fonts from Google Fonts to user for the program (Play and Roboto-Slab)
 - [x] create an x-icon to use for this page
 - [x] Each of the entries in the playlist should show a title, an artist
-- [ ] thumbnail image that represents the audio file, typically the album cover
+- [x] thumbnail image that represents the audio file, typically the album cover | added poster_path value to each song and imageBaseUrl variable
 - [ ] Nothing plays by default when the app loads
 - [x] Choose a Color Scheme that the APP follows | Generated from colormind.io
 - [x] (SORTA)The user will have to tap on an item in the list to play
 - [ ] When an audio file reaches its end, the next item in the list should play
 - [x] Create an Object that contains all the information about the audio files
-- [x] Minimum of 5 songs in the playlist, from a minimum of two artists. Store all the audio files in a media folder inside the www folder.
+- [x] Minimum of 5 songs in the playlist, from a minimum of two artists. Store all the audio files in a media folder inside the www folder. | Song are stored with a path property built using mediaBaseUrl + APP.audio[x]
 - [ ] User should be able to click on another item in the list to start it playing. This will stop the current one playing. Use a global property to hold the media object that is playing the audio.
 - [ ] The user should be able to pause and resume the playback of the current song.
 - [ ] There should be some visual indication when a song is playing.

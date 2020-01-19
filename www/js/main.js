@@ -21,7 +21,8 @@ const APP = {
     //base url for the filepath to the song assets in the www/media folder
     //volume is used to store the value of the current volume level for the PLAYR app
     //default volume for the app is 50% or 0.5
-    baseURL: 'file:///android_asset/www/media/',
+    mediaBaseURL: 'file:///android_asset/www/media/',
+    imageBaseUrl: 'file:///android_asset/www/img/',
     volume: 0.5,
     
     //the media object 'currentTrack' used by the cordova media plugin
@@ -56,7 +57,8 @@ const APP = {
             track: "Invalid Letter Dept.",
             album: "Relationship of Command",
             length: 0,
-            path: "at-the-drive-in/invalid_letter_dept.mp3"
+            path: "at-the-drive-in/invalid_letter_dept.mp3",
+            poster_path: "album-covers/relationship-of-command.jpg"
         },
         {
             id: 344,
@@ -64,7 +66,8 @@ const APP = {
             track: "One Armed Scissor",
             album: "Relationship of Command",
             length: 0,
-            path: "at-the-drive-in/one_armed_scissor.mp3"
+            path: "at-the-drive-in/one_armed_scissor.mp3",
+            poster_path: "album-covers/relationship-of-command.jpg"
         },
         {
             id: 434,
@@ -72,7 +75,8 @@ const APP = {
             track: "Electric Feel",
             album: "Oracular Spectacular",
             length: 0,
-            path: "mgmt/electric_feel.mp3"
+            path: "mgmt/electric_feel.mp3",
+            poster_path: "album-covers/oracular-spectacular.jpg"
         },
         {
             id: 842,
@@ -80,7 +84,8 @@ const APP = {
             track: "Stay Useless",
             album: "Attack on Memory",
             length: 0,
-            path: "cloud-nothings/stay-useless.mp3"
+            path: "cloud-nothings/stay-useless.mp3",
+            poster_path: "album-covers/attack-on-memory.jpg"
         },
         {
             id: 843,
@@ -88,7 +93,8 @@ const APP = {
             track: "Fall In",
             album: "Attack on Memory",
             length: 0,
-            path: "cloud-nothings/fall-in.mp3"
+            path: "cloud-nothings/fall-in.mp3",
+            poster_path: "album-covers/attack-on-memory.jpg"
         }
     ],
     init: () => {
