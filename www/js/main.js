@@ -29,6 +29,7 @@ const APP = {
     //also the 'status' and 'err' object are used to understand the different status
     //and error codes given back by the cordova media plugin
     currentTrack: null,
+    currentTrack_info: null,
     status: {
         '0': 'MEDIA_NONE',
         '1': 'MEDIA_STARTING',
@@ -48,6 +49,7 @@ const APP = {
     //the use will be for incrementing the progress bar in time with the current song
     //playing, 'tickerposition' is used to move the ticker text displaying the song information
     //in the current playing screen of the song
+    currentSongPos: null,
     currentPosition: 0,
     tickerPosition: 0,
     audio: [
@@ -114,10 +116,10 @@ const APP = {
 
         //initialize the song list with the songs in our song array
         APP.music_init(APP.audio);
-        APP.setMediaControlListeners();
+        APP.setPlayrListeners();
 
         //test timer for the progress bar
-        let progress_animation = setInterval(APP.progressBar, 100, null);
+        // let progress_animation = setInterval(APP.progressBar, 100, null);
     },
     nav: ev => {
         ev.preventDefault();
@@ -188,16 +190,20 @@ const APP = {
     //become a helper event to the play song event
     buildSongPage: ev => {
         console.log(ev.currentTarget.getAttribute("data-songid"));
-        let song_choice = APP.audio.find(entry => {
+        APP.currentTrack_info = APP.audio.find(entry => {
             return entry.id == ev.currentTarget.getAttribute("data-songid");
         });
-        console.log(song_choice);
-        APP.currentTrack = song_choice;
+        console.log(APP.currentTrack_info);
 
         APP.showPage('currentsong');
 
         //find the title and put the song title
-        document.querySelector('h3#title').textContent= song_choice.track;
+        document.querySelector('h3#title').textContent= APP.currentTrack_info.track;
+
+        //now to create the media object and play the users choice
+        //using helper functions created below
+        APP.createMedia(APP.currentTrack_info);
+        APP.play();
     },
 
 
@@ -230,16 +236,59 @@ const APP = {
     //the codejist provided in the cordova video link: https://www.youtube.com/watch?v=Fk-DpOnuvmM&feature=emb_title
 
     //setting all the event listeners for the media playback controls
-    setMediaControlListeners: function(){
+    setPlayrListeners: function(){
+
+        //event listeners for media controls
         document.getElementById('play-btn').addEventListener('click', APP.play);
         document.getElementById('pause-btn').addEventListener('click', APP.pause);
         document.getElementById('ff-btn').addEventListener('click', APP.fastforward);
         document.getElementById('rew-btn').addEventListener('click', APP.rewind);
         document.getElementById('up-btn').addEventListener('click', APP.volumeUp);
         document.getElementById('down-btn').addEventListener('click', APP.volumeDown);
+
+        //event listeners for the android system:
+        document.addEventListener('pause',() =>{
+            //when the android os pauses (suspends) this app it will release the media
+            //to save on memory and will record the current positon before doing that
+            console.log('system has paused the android playr app');
+            // APP.currentTrack.getCurrentPosition(APP.currentPositionGood, APP.currentPositionFail);
+            APP.currentTrack.release();
+
+        });
+        document.addEventListener('menubutton', () =>{
+            //when the user clicks the menu button, record the current location of the song
+            //to the playr app?
+            // APP.currentTrack.getCurrentPosition(APP.currentPositionGood, APP.currentPositionFail);
+            console.log('menu button was clicked by user')
+        });
+        document.addEventListener('resume', () =>{
+            //when the android os resumes the PLAYR app after
+            //being suspended. It will create a new media object
+            //and place it in APP.currentTrack, and is rebuilt from currentTrack_info
+            // if(APP.currentTrack_info){
+            //     APP.createMedia(APP.currentTrack_info);
+            //     APP.currentTrack.seekTo(APP.currentSongPos/1000);
+            //     APP.play();
+            // }
+            // APP.currentTrack = new Media(APP.mediaBaseURL+this.currentTrack_info.path,
+            //     APP.mediaSuccess, APP.mediaFailure, APP.mediaStatusChange);
+        });
     },
 
-    //the success callback fucntion for the cordova media plugin
+    //Success callback function for the get current positon media function
+    //it is given the pos parameter that is the value of the current postion in 
+    //seconds
+    currentPositionGood: pos => {
+        APP.currentSongPos = pos;
+    },
+
+    //failure callback function for the get current position media function
+    currentPositionFail: err =>{
+        //change this to maybe a little something more verbose to both the user and 
+        //the developer
+        console.log(`An Error happened, oh no ${err}`);
+    },
+    //the success callback fucntion for the cordova media plugin create new Media
     mediaSuccess: function() {
         console.log(`System was successful is loading the media object`);
     },
@@ -256,20 +305,55 @@ const APP = {
 
     //the change of status callback fucntion for the cordova media object
     mediaStatusChange: status => {
-        //this is the fucntion that will be called when the status is changed
+        //this is the function that will be called when the status is changed
         //for now I am just using console.log statements but should change later 
         //to display the information to the user with a kick popup or flash some text
         console.log(`media status is now ${APP.status[status]}`);
+
+        switch(status){
+            default:
+                console.warn("Something funky is going on here");
+                break;
+            // Case 0 is what happens when there is no media object
+            //I must refer to the documentation to understand what this means
+            case 0:
+                break;
+            //When the Media object starts running
+            //we can initialize the progress bar and the ticker animation
+            case 1:
+                break;
+            //When the media objects starts running (playing)
+            //we can increment the progress bar here, while the ticker runs independantly
+            //or resume it based on the current progress of the song
+            case 2:
+                break;
+            //When the media Object Gets Paused we can suspend the ticker animation
+            case 3:
+                break;
+            //When the media obejct gets stopped, we could release the memory
+            case 4:
+                break;
+        }
+    },
+
+    //helper function to reduce the amount of code i write
+    //when creating the new media objects
+    //parameters are the song_info which is an entry from the APP.audio array
+    createMedia: song_info => {
+        //just to be sure, release the current media before procedding
+        if(APP.currentTrack) APP.currentTrack.release();
+        APP.currentTrack =  new Media(APP.mediaBaseURL+song_info.path,
+            APP.mediaSuccess, APP.mediaFailure, APP.mediaStatusChange);
     },
 
     //the function to play a song using cordova media plugin
-    play: function(){
+    play: () => {
         APP.currentTrack.play();
     },
 
     //the function to pause a song using cordova media plugin
     pause: function() {
-        APP.mediaFailure.pause();
+        APP.currentTrack.pause();
     },
 
     //the volume up function, will check the current volume
