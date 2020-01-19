@@ -108,6 +108,7 @@ const APP = {
 
         //initialize the song list with the songs in our song array
         APP.music_init(APP.audio);
+        APP.setMediaControlListeners();
 
         //test timer for the progress bar
         let progress_animation = setInterval(APP.progressBar, 100, null);
@@ -221,6 +222,16 @@ const APP = {
     //for the cordova media plugin that are bound to the click
     //event of the buttons the code for the functions are all based on the
     //the codejist provided in the cordova video link: https://www.youtube.com/watch?v=Fk-DpOnuvmM&feature=emb_title
+
+    //setting all the event listeners for the media playback controls
+    setMediaControlListeners: function(){
+        document.getElementById('play-btn').addEventListener('click', APP.play);
+        document.getElementById('pause-btn').addEventListener('click', APP.pause);
+        document.getElementById('ff-btn').addEventListener('click', APP.fastforward);
+        document.getElementById('rew-btn').addEventListener('click', APP.rewind);
+        document.getElementById('up-btn').addEventListener('click', APP.volumeUp);
+        document.getElementById('down-btn').addEventListener('click', APP.volumeDown);
+    },
 
     //the success callback fucntion for the cordova media plugin
     mediaSuccess: function() {
