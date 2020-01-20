@@ -54,6 +54,7 @@ const APP = {
     currentPosition: 0,
     tickerIndex: 0,
     tickerTimeout: null,
+    progressTimeout: null,
     audio: [
         {
             id: 343,
@@ -233,6 +234,23 @@ const APP = {
             APP.currentPosition = 0;
         }
 
+        //find the two time p elements and then change them based on the progress in the song
+        let start = document.querySelector('p.start-time');
+        let end = document.querySelector('p.end-time');
+
+        //set the current position and the end time as the text values
+        if(APP.currentTrack){
+            let currentTime = APP.currentTrack.getCurrentPosition(time => {
+                if (time > -1){
+                    return time
+                }
+            });
+            let dur = APP.currentTrack.getDuration();
+            if(currentTime) start.textContent = currentTime.toString.padStart(2, '0');
+            end.textContent = dur.toString.padStart(2, '0');
+        }
+        
+
         // //begins testing for ticker animation for text info
         // let ticker = document.querySelector('.ticker');
         // let tickerText = `SONG: ${APP.currentTrack.track} ALBUM: ${APP.currentTrack.album} ARTIST: ${APP.currentTrack.artist}`
@@ -369,6 +387,7 @@ const APP = {
             case 2:
                 //set the interval for the ticker feature
                 APP.tickerTimeout = setInterval(APP.tickerFeature, 100);
+                APP.progressTimeout = setInterval(APP.progressBar, 1000);
                 break;
             //When the media Object Gets Paused we can suspend the ticker animation
             case 3:
@@ -378,6 +397,7 @@ const APP = {
                 // if(APP.currentTrack) APP.currentTrack.release();
                 //clear the interval on the timeout when the song stops or is reloaded
                 clearInterval(APP.tickerTimeout);
+                clearInterval(APP.progressTimeout);
                 //this case will run when either the song finishes or the APP.currentTrack.release() is run
                 if(APP.currentTrack.getDuration() !== -1){
                     APP.playNextSong();
