@@ -286,6 +286,7 @@ const APP = {
             // }
             // APP.currentTrack = new Media(APP.mediaBaseURL+this.currentTrack_info.path,
             //     APP.mediaSuccess, APP.mediaFailure, APP.mediaStatusChange);
+            console.log("APP is resumed");
         });
     },
 
@@ -339,6 +340,7 @@ const APP = {
         //     // }
         //     console.log(currentTime, duration);
         // }
+        console.log("media success function ran from creating the media object");
     },
 
     //the failure callback function for the cordova media plugin
@@ -384,6 +386,19 @@ const APP = {
             //When the media obejct gets stopped, we could release the memory
             case 4:
                 // if(APP.currentTrack) APP.currentTrack.release();
+                //this case will run when either the song finishes or the APP.currentTrack.release() is run
+                //frist get a reference to the current index number of the song that was just played
+                let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
+
+                //then increment the index by one and check if it is still within the arry bound otherwise set to zero
+                index ++;
+                if(index >= APP.audio.length) index = 0;
+                console.log(index);
+
+                //since it is stopped we know that the song is released so just set the new
+                //currentsong_info and create the media (do not play the song yet)
+                APP.currentTrack_info = APP.audio[index];
+                console.log(APP.currentTrack_info);
                 break;
         }
     },
