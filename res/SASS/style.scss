@@ -93,19 +93,6 @@ main {
 
         .poster{
             padding: 10px;
-            .ticker{
-                // position: relative;
-                // left: 25px;
-                width: 200px;
-                height: 35px;
-                margin-bottom: 100px;
-                overflow: hidden;
-
-
-                //this method to fix this was taken from
-                //https://stackoverflow.com/questions/7546389/css-overflow-only-1-line-of-text
-                white-space: nowrap;
-            }
         }
         //start of css for volume controls
         .volume-controls{
@@ -129,4 +116,19 @@ main {
             width: 100%;
         }
     }
+}
+
+//selector for just the ticker text:
+.ticker{
+    // position: relative;
+    // left: 25px;
+    width: 200px;
+    height: 35px;
+    margin-bottom: 100px;
+    overflow: hidden;
+
+
+    //this method to fix this was taken from
+    //https://stackoverflow.com/questions/7546389/css-overflow-only-1-line-of-text
+    white-space: nowrap;
 }

@@ -122,8 +122,6 @@ const APP = {
 
         //test timer for the progress bar
         // let progress_animation = setInterval(APP.progressBar, 100, null);
-        //test the interval for the ticker function
-        APP.tickerTimeout = setInterval(APP.tickerFeature, 400);
     },
     nav: ev => {
         ev.preventDefault();
@@ -369,6 +367,8 @@ const APP = {
             //we can increment the progress bar here, while the ticker runs independantly
             //or resume it based on the current progress of the song
             case 2:
+                //set the interval for the ticker feature
+                APP.tickerTimeout = setInterval(APP.tickerFeature, 100);
                 break;
             //When the media Object Gets Paused we can suspend the ticker animation
             case 3:
@@ -376,6 +376,8 @@ const APP = {
             //When the media obejct gets stopped, we could release the memory
             case 4:
                 // if(APP.currentTrack) APP.currentTrack.release();
+                //clear the interval on the timeout when the song stops or is reloaded
+                clearInterval(APP.tickerTimeout);
                 //this case will run when either the song finishes or the APP.currentTrack.release() is run
                 if(APP.currentTrack.getDuration() !== -1){
                     APP.playNextSong();
