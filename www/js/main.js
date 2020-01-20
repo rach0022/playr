@@ -307,23 +307,38 @@ const APP = {
         //this function is ran when the system finishes playing the song
         //we should make the next song in the playlist 
         //first we find the index of the array
-        if(APP.currentTrack){
+        // if(APP.currentTrack){
 
-            let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
-            index = index + 1;
-            if(index >= APP.audio.length){
-                index = 0;
-            }
+        //first we have to check the current song duration
+        //and our place in the song, if our placein the song is less than the duration 
+        //then we do not increment the index number
 
-            //after incrementing the index and checking if its in our range we set
-            //the currentTrackinfo to the APP.audio[index] and then release the media object
-            //and then play the new one
-            if(APP.currentTrack) APP.currentTrack.release();
-            APP.currentTrack_info = APP.audio[index];
-            APP.createMedia(APP.currentTrack_info);
-            APP.play();
-        }
-        console.log(`System was successful in playing the media object, on to the next`);
+        //failed code to increment the song, will keep incrementing constantly
+        //must change logic
+        // if(APP.currentTrack){
+        //     let duration = APP.currentTrack.getDuration();
+        //     let currentTime = APP.currentTrack.getCurrentPosition(time => time*1000);
+        //     if(currentTime >= duration){
+        //         //do nothing
+        //         console.log("system has loaded the song");
+        //     } else {
+        //         let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
+        //         index = index + 1;
+        //         if(index >= APP.audio.length){
+        //             index = 0;
+        //         }
+
+        //         //after incrementing the index and checking if its in our range we set
+        //         //the currentTrackinfo to the APP.audio[index] and then release the media object
+        //         //and then play the new one
+        //         if(APP.currentTrack) APP.currentTrack.release();
+        //         APP.currentTrack_info = APP.audio[index];
+        //         APP.createMedia(APP.currentTrack_info);
+        //         APP.play();
+        //     }
+        //     // }
+        //     console.log(currentTime, duration);
+        // }
     },
 
     //the failure callback function for the cordova media plugin
@@ -368,7 +383,7 @@ const APP = {
                 break;
             //When the media obejct gets stopped, we could release the memory
             case 4:
-                if(APP.currentTrack) APP.currentTrack.release();
+                // if(APP.currentTrack) APP.currentTrack.release();
                 break;
         }
     },
