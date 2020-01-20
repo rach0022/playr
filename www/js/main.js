@@ -189,6 +189,10 @@ const APP = {
     //this event will change to play song or
     //become a helper event to the play song event
     buildSongPage: ev => {
+        //first we must clear any song playing if if exists
+        if(APP.currentTrack) APP.currentTrack.release();
+
+        //then build the page based on the new song
         console.log(ev.currentTarget.getAttribute("data-songid"));
         APP.currentTrack_info = APP.audio.find(entry => {
             return entry.id == ev.currentTarget.getAttribute("data-songid");
@@ -303,19 +307,22 @@ const APP = {
         //this function is ran when the system finishes playing the song
         //we should make the next song in the playlist 
         //first we find the index of the array
-        let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
-        index = index + 1;
-        if(index >= APP.audio.length){
-            index = 0;
-        }
+        if(APP.currentTrack){
 
-        //after incrementing the index and checking if its in our range we set
-        //the currentTrackinfo to the APP.audio[index] and then release the media object
-        //and then play the new one
-        if(APP.currentTrack) APP.currentTrack.release();
-        APP.currentTrack_info = APP.audio[index];
-        APP.createMedia(APP.currentTrack_info);
-        APP.play();
+            let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
+            index = index + 1;
+            if(index >= APP.audio.length){
+                index = 0;
+            }
+
+            //after incrementing the index and checking if its in our range we set
+            //the currentTrackinfo to the APP.audio[index] and then release the media object
+            //and then play the new one
+            if(APP.currentTrack) APP.currentTrack.release();
+            APP.currentTrack_info = APP.audio[index];
+            APP.createMedia(APP.currentTrack_info);
+            APP.play();
+        }
         console.log(`System was successful in playing the media object, on to the next`);
     },
 
