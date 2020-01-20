@@ -199,6 +199,7 @@ const APP = {
 
         //find the title and put the song title
         document.querySelector('h3#title').textContent= APP.currentTrack_info.track;
+        document.querySelector('h4#artist').textContent= APP.currentTrack_info.artist;
 
         //now to create the media object and play the users choice
         //using helper functions created below
@@ -212,6 +213,7 @@ const APP = {
         //to the values from the new song
         //find the title and put the song title
         document.querySelector('h3#title').textContent= APP.currentTrack_info.track;
+        document.querySelector('h4#artist').textContent= APP.currentTrack_info.artist;
     },
 
 
