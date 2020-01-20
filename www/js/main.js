@@ -206,6 +206,14 @@ const APP = {
         APP.play();
     },
 
+    //function to rebuild the song page after the current song is finished playing
+    rebuildSongPage: function() {
+        //first we will get refrences to the html elements and set their text content
+        //to the values from the new song
+        //find the title and put the song title
+        document.querySelector('h3#title').textContent= APP.currentTrack_info.track;
+    },
+
 
     //function to animate progress bars based on the current postion in teh music
     //for now input parameters are just not used just becuase timer is testing
@@ -290,7 +298,23 @@ const APP = {
     },
     //the success callback fucntion for the cordova media plugin create new Media
     mediaSuccess: function() {
-        console.log(`System was successful is loading the media object`);
+        //this function is ran when the system finishes playing the song
+        //we should make the next song in the playlist 
+        //first we find the index of the array
+        let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
+        index = index + 1;
+        if(index >= APP.audio.length){
+            index = 0;
+        }
+
+        //after incrementing the index and checking if its in our range we set
+        //the currentTrackinfo to the APP.audio[index] and then release the media object
+        //and then play the new one
+        if(APP.currentTrack) APP.currentTrack.release();
+        APP.currentTrack_info = APP.audio[index];
+        APP.createMedia(APP.currentTrack_info);
+        APP.play();
+        console.log(`System was successful in playing the media object, on to the next`);
     },
 
     //the failure callback function for the cordova media plugin
@@ -318,9 +342,12 @@ const APP = {
             //I must refer to the documentation to understand what this means
             case 0:
                 break;
-            //When the Media object starts running
+            //When the Media object is Starting up
             //we can initialize the progress bar and the ticker animation
+            //and also change the html elements to reflect the new song
+            //using the rebuildSongPage helper function to accomplish this
             case 1:
+                APP.rebuildSongPage();
                 break;
             //When the media objects starts running (playing)
             //we can increment the progress bar here, while the ticker runs independantly
