@@ -47,11 +47,13 @@ const APP = {
     //'currentposition' is used for the current position of the media file,
     //might switch to using just the function from the cordova media plugin
     //the use will be for incrementing the progress bar in time with the current song
-    //playing, 'tickerposition' is used to move the ticker text displaying the song information
-    //in the current playing screen of the song
+    //playing, 'tickerindex' is used to move the ticker text displaying the song information
+    //in the current playing screen of the song will use in conjunction with tickerTimeout so i can
+    //setInterval and clearInterval when the song starts playing and clear it when it stops (or paused)
     currentSongPos: null,
     currentPosition: 0,
-    tickerPosition: 0,
+    tickerIndex: 0,
+    tickerTimeout: null,
     audio: [
         {
             id: 343,
@@ -120,6 +122,8 @@ const APP = {
 
         //test timer for the progress bar
         // let progress_animation = setInterval(APP.progressBar, 100, null);
+        //test the interval for the ticker function
+        APP.tickerTimeout = setInterval(APP.tickerFeature, 400);
     },
     nav: ev => {
         ev.preventDefault();
@@ -189,8 +193,6 @@ const APP = {
     //this event will change to play song or
     //become a helper event to the play song event
     buildSongPage: ev => {
-        //first we must clear any song playing if if exists
-        // if(APP.currentTrack) APP.currentTrack.release();
 
         //then build the page based on the new song
         console.log(ev.currentTarget.getAttribute("data-songid"));
@@ -233,15 +235,33 @@ const APP = {
             APP.currentPosition = 0;
         }
 
-        //begins testing for ticker animation for text info
-        let ticker = document.querySelector('.ticker');
-        let tickerText = `SONG: ${APP.currentTrack.track} ALBUM: ${APP.currentTrack.album} ARTIST: ${APP.currentTrack.artist}`
-        APP.tickerPosition ++;
-        ticker.textContent = tickerText.substring(APP.tickerPosition) + tickerText.substring(0, APP.tickerPosition);
-        if(APP.tickerPosition >= tickerText.length){
-            APP.tickerPosition = 0;
-        }
+        // //begins testing for ticker animation for text info
+        // let ticker = document.querySelector('.ticker');
+        // let tickerText = `SONG: ${APP.currentTrack.track} ALBUM: ${APP.currentTrack.album} ARTIST: ${APP.currentTrack.artist}`
+        // APP.tickerPosition ++;
+        // ticker.textContent = tickerText.substring(APP.tickerPosition) + tickerText.substring(0, APP.tickerPosition);
+        // if(APP.tickerPosition >= tickerText.length){
+        //     APP.tickerPosition = 0;
+        // }
         // console.log(tickerText);
+    },
+
+    //function to run the ticker text
+    //the full ticker text is a combination of the track details
+    //the displayed ticker text will be the full ticker text starting from a counter (that we increment each 400ms)
+    //plus the the remaining text from position 0 back to the current position of the ticker
+    //we will use the APP.tickerIndex varaible to be the counter
+    tickerFeature: function(){
+        //first get a reference to the ticker output element in the html document
+        //then increment the ticker and make sure it is within ticker text range and create the ticker text
+        let ticker = document.querySelector('.ticker');
+        let tickerText = `|| ${APP.currentTrack_info.track} || ${APP.currentTrack_info.album} || ${APP.currentTrack_info.artist}`
+        APP.tickerIndex ++;
+        
+        if(APP.tickerIndex >= tickerText.length) APP.tickerIndex = 0;
+
+        //then set the ticker with the proper ticker text
+        ticker.textContent = tickerText.substring(APP.tickerIndex) + tickerText.substring(0, APP.tickerIndex);
     },
 
     //Starting of the callback functions used
