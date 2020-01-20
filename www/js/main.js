@@ -190,7 +190,7 @@ const APP = {
     //become a helper event to the play song event
     buildSongPage: ev => {
         //first we must clear any song playing if if exists
-        if(APP.currentTrack) APP.currentTrack.release();
+        // if(APP.currentTrack) APP.currentTrack.release();
 
         //then build the page based on the new song
         console.log(ev.currentTarget.getAttribute("data-songid"));
@@ -368,6 +368,7 @@ const APP = {
                 break;
             //When the media obejct gets stopped, we could release the memory
             case 4:
+                if(APP.currentTrack) APP.currentTrack.release();
                 break;
         }
     },
