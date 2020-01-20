@@ -305,41 +305,11 @@ const APP = {
     },
     //the success callback fucntion for the cordova media plugin create new Media
     mediaSuccess: function() {
-        //this function is ran when the system finishes playing the song
+        //this function is ran when the system finishes playing the song or finishes loading the new media object
+        //is there a way to tell the difference?
         //we should make the next song in the playlist 
         //first we find the index of the array
         // if(APP.currentTrack){
-
-        //first we have to check the current song duration
-        //and our place in the song, if our placein the song is less than the duration 
-        //then we do not increment the index number
-
-        //failed code to increment the song, will keep incrementing constantly
-        //must change logic
-        // if(APP.currentTrack){
-        //     let duration = APP.currentTrack.getDuration();
-        //     let currentTime = APP.currentTrack.getCurrentPosition(time => time*1000);
-        //     if(currentTime >= duration){
-        //         //do nothing
-        //         console.log("system has loaded the song");
-        //     } else {
-        //         let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
-        //         index = index + 1;
-        //         if(index >= APP.audio.length){
-        //             index = 0;
-        //         }
-
-        //         //after incrementing the index and checking if its in our range we set
-        //         //the currentTrackinfo to the APP.audio[index] and then release the media object
-        //         //and then play the new one
-        //         if(APP.currentTrack) APP.currentTrack.release();
-        //         APP.currentTrack_info = APP.audio[index];
-        //         APP.createMedia(APP.currentTrack_info);
-        //         APP.play();
-        //     }
-        //     // }
-        //     console.log(currentTime, duration);
-        // }
         console.log("media success function ran from creating the media object");
     },
 
@@ -419,6 +389,8 @@ const APP = {
         //currentsong_info and create the media (do not play the song yet)
         APP.currentTrack_info = APP.audio[index];
         console.log(APP.currentTrack_info);
+        APP.createMedia(APP.currentTrack_info);
+        APP.play();
     },
 
     //the function to play a song using cordova media plugin
