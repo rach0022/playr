@@ -387,18 +387,10 @@ const APP = {
             case 4:
                 // if(APP.currentTrack) APP.currentTrack.release();
                 //this case will run when either the song finishes or the APP.currentTrack.release() is run
-                //frist get a reference to the current index number of the song that was just played
-                let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
-
-                //then increment the index by one and check if it is still within the arry bound otherwise set to zero
-                index ++;
-                if(index >= APP.audio.length) index = 0;
-                console.log(index);
-
-                //since it is stopped we know that the song is released so just set the new
-                //currentsong_info and create the media (do not play the song yet)
-                APP.currentTrack_info = APP.audio[index];
-                console.log(APP.currentTrack_info);
+                if(APP.currentTrack.getDuration() !== -1){
+                    APP.playNextSong();
+                    console.log(APP.currentTrack.getDuration());
+                }
                 break;
         }
     },
@@ -411,6 +403,22 @@ const APP = {
         if(APP.currentTrack) APP.currentTrack.release();
         APP.currentTrack =  new Media(APP.mediaBaseURL+song_info.path,
             APP.mediaSuccess, APP.mediaFailure, APP.mediaStatusChange);
+    },
+
+    //this function is a helper function to increment to the next song in the array
+    playNextSong: function(){
+        //first get a reference to the current index number of the song that was just played
+        let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
+
+        //then increment the index by one and check if it is still within the arry bound otherwise set to zero
+        index ++;
+        if(index >= APP.audio.length) index = 0;
+        console.log(index);
+
+        //since it is stopped we know that the song is released so just set the new
+        //currentsong_info and create the media (do not play the song yet)
+        APP.currentTrack_info = APP.audio[index];
+        console.log(APP.currentTrack_info);
     },
 
     //the function to play a song using cordova media plugin
