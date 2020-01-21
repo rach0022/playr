@@ -77,12 +77,6 @@ main {
 #currentsong .controls .progressbar {
   width: 200px;
   height: 20px;
-  background: red;
-}
-#currentsong .controls .progressbar .currentstatus {
-  width: 20%;
-  background: blue;
-  height: 100%;
 }
 #currentsong .controls .poster {
   padding: 10px;

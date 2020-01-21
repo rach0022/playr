@@ -79,16 +79,12 @@ main {
         text-align: center;
         align-items: center;
         //start of the css for the progress bar
+        //.progressbar is a wrapper for the progress bar
+        //we set its width as the max value for the progress bar size
         .progressbar{
             width: $progressbar-width;
             height: 20px;
-            background: red;
-
-            .currentstatus{
-                width: 20%;
-                background: blue;
-                height: 100%;
-            }
+            // background: red;
         }
 
         .poster{

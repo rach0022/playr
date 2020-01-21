@@ -221,8 +221,10 @@ const APP = {
     },
 
 
-    //function to animate progress bars based on the current postion in teh music
-    //for now input parameters are just not used just becuase timer is testing
+    //function to animate progress bars based on the current postion in the music
+    //if and only if the APP.currentTrack is not falsy, we also update the time values
+    //on the p tags in the page, this function should ideally be run every 400 ms so it re
+    //checks the values times every 2 seconds 
     progressBar: song =>{
         if(APP.currentTrack){
             //set the current position and the end time as the text values
@@ -233,24 +235,13 @@ const APP = {
 
             //start of the code for the progress bar
             //find a reference to the progress bar element
-            //and then set its width to (dur/FullBarWidth)*currentSongPos
-            //to get the number extracted from the fullbar width
-            //i am using the regular expressions to find non numbers and replace with nothing
-            //learned from here:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-            //regex made ^/D+ /D means all digits, + means one or more and ^ means not
-            //so match all not digits
-            // let selectLetters = new RegExp('^/D+');
-            let bar = document.querySelector('.currentstatus');
+            let bar = document.querySelector('progress');
             
-            //trying with hardcoded value because i am having issues getting fullBar.style.width
-            //to return anything, fullbar is currently 200px
-            let progressMade = (dur/200)*APP.currentSongTime;
-            //error checking to make sure the max value is the duration
-            if(progressMade >= dur) progressMade = dur;
+            //and then set its width (value )
+            bar.value = APP.currentSongTime;
 
-            //then set the bar
-            bar.style.width = `${progressMade}px`;
-
+            //then i have to set the max value to make sure its the same on the song end time
+            bar.max = dur;
             //find the two time p elements and then change them based on the progress in the song
             let start = document.querySelector('p.start-time');
             let end = document.querySelector('p.end-time');
@@ -401,7 +392,7 @@ const APP = {
             case 2:
                 //set the interval for the ticker feature
                 APP.tickerTimeout = setInterval(APP.tickerFeature, 100);
-                APP.progressTimeout = setInterval(APP.progressBar, 1000);
+                APP.progressTimeout = setInterval(APP.progressBar, 400);
                 break;
             //When the media Object Gets Paused we can suspend the ticker animation
             case 3:
