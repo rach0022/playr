@@ -50,7 +50,7 @@ const APP = {
     //playing, 'tickerindex' is used to move the ticker text displaying the song information
     //in the current playing screen of the song will use in conjunction with tickerTimeout so i can
     //setInterval and clearInterval when the song starts playing and clear it when it stops (or paused)
-    currentSongPos: null,
+    currentSongTime: null,
     currentPosition: 0,
     tickerIndex: 0,
     tickerTimeout: null,
@@ -240,14 +240,21 @@ const APP = {
 
         //set the current position and the end time as the text values
         if(APP.currentTrack){
-            // let currentTime = APP.currentTrack.getCurrentPosition(time => {
-            //     if (time > -1){
-            //         return time
-            //     }
-            // });
+            //to get the current time we have callback currentTimeGood and currentTimeFail
+            //we use those in the getCurrentPosition and update the APP.currentSongPos
+            APP.currentTrack.getCurrentPosition(APP.currentTimeGood, APP.currentTimeFail);
             let dur = APP.currentTrack.getDuration();
+            // console.log(dur, dur%60, dur/60);
+            // console.log(Math.floor(dur/60).toString().padStart(2, '0'), ":", Math.ceil(dur%60).toString().padStart(2,'0'));
             // if(currentTime) start.textContent = currentTime.toString().padStart(2, '0');
-            end.textContent = dur.toString().padStart(2, '0');
+
+            //start of logic to convert seconds values into proper time formats MM:SS
+            //first we take the time value (in seconds) and we /60 and round down for the number of minutes
+            //we use padStart to make sure it is the proper length and then we take the 
+            //duration mod 60 (the remainder) and concat the rounded up value for the seconds
+            //same logic is used for the current time
+            start.textContent = Math.floor(APP.currentSongTime/60).toString().padStart(2, '0') + ":" + Math.ceil(APP.currentSongTime%60).toString().padStart(2,'0');
+            end.textContent = Math.floor(dur/60).toString().padStart(2, '0') + ":" + Math.ceil(dur%60).toString().padStart(2,'0');
         }
         
 
@@ -329,12 +336,12 @@ const APP = {
     //Success callback function for the get current positon media function
     //it is given the pos parameter that is the value of the current postion in 
     //seconds
-    currentPositionGood: pos => {
-        APP.currentSongPos = pos;
+    currentTimeGood: pos => {
+        APP.currentSongTime = pos;
     },
 
     //failure callback function for the get current position media function
-    currentPositionFail: err =>{
+    currentTimeFail: err =>{
         //change this to maybe a little something more verbose to both the user and 
         //the developer
         console.log(`An Error happened, oh no ${err}`);
