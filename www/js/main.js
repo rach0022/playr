@@ -51,7 +51,6 @@ const APP = {
     //in the current playing screen of the song will use in conjunction with tickerTimeout so i can
     //setInterval and clearInterval when the song starts playing and clear it when it stops (or paused)
     currentSongTime: null,
-    currentPosition: 0,
     tickerIndex: 0,
     tickerTimeout: null,
     progressTimeout: null,
