@@ -7,13 +7,13 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-media": {
       "PACKAGE_NAME": "com.algonquin.rach0022.playr"
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.algonquin.rach0022.playr"
     },
-    "cordova-plugin-media": {
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.algonquin.rach0022.playr"
     }
   },

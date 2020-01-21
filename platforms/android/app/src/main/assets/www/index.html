@@ -3,9 +3,12 @@
 <head>
     <meta http-equiv="Content-Security-Policy" content="
         default-src https://fonts.gstatic.com/ https://use.fontawesome.com/releases/v5.0.8/ 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; 
-        style-src  https://fonts.googleapis.com/css?family=Play|Roboto+Slab&display=swap https://use.fontawesome.com/releases/v5.0.8/css/all.css  'self' 'unsafe-inline'; 
+        style-src   https://use.fontawesome.com/releases/v5.0.8/css/all.css  'self' 'unsafe-inline'; 
         media-src *; 
         img-src 'self' data: content:;">
+    <!-- removed from content security policy:  
+    https://fonts.googleapis.com/css?family=Play|Roboto+Slab&display=swap-->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -72,7 +75,6 @@
     </main>
     <!-- <p><i class="fab fa-facebook"></i></p> -->
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>   
     <script src="js/main.js"></script> 
 </body>
 </html>
