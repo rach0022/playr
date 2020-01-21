@@ -75,7 +75,7 @@ main {
   align-items: center;
 }
 #currentsong .controls .progressbar {
-  width: 100%;
+  width: 200px;
   height: 20px;
   background: red;
 }

@@ -80,7 +80,7 @@ main {
         align-items: center;
         //start of the css for the progress bar
         .progressbar{
-            width: 100%;
+            width: $progressbar-width;
             height: 20px;
             background: red;
 

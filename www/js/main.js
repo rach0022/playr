@@ -225,28 +225,36 @@ const APP = {
     //function to animate progress bars based on the current postion in teh music
     //for now input parameters are just not used just becuase timer is testing
     progressBar: song =>{
-        let bar = document.querySelector('.currentstatus');
-        APP.currentPosition += 1;
-
-        bar.style.width = `${APP.currentPosition}%`
-
-        if(APP.currentPosition >= 100){
-            APP.currentPosition = 0;
-        }
-
-        //find the two time p elements and then change them based on the progress in the song
-        let start = document.querySelector('p.start-time');
-        let end = document.querySelector('p.end-time');
-
-        //set the current position and the end time as the text values
         if(APP.currentTrack){
+            //set the current position and the end time as the text values
             //to get the current time we have callback currentTimeGood and currentTimeFail
             //we use those in the getCurrentPosition and update the APP.currentSongPos
             APP.currentTrack.getCurrentPosition(APP.currentTimeGood, APP.currentTimeFail);
             let dur = APP.currentTrack.getDuration();
-            // console.log(dur, dur%60, dur/60);
-            // console.log(Math.floor(dur/60).toString().padStart(2, '0'), ":", Math.ceil(dur%60).toString().padStart(2,'0'));
-            // if(currentTime) start.textContent = currentTime.toString().padStart(2, '0');
+
+            //start of the code for the progress bar
+            //find a reference to the progress bar element
+            //and then set its width to (dur/FullBarWidth)*currentSongPos
+            //to get the number extracted from the fullbar width
+            //i am using the regular expressions to find non numbers and replace with nothing
+            //learned from here:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+            //regex made ^/D+ /D means all digits, + means one or more and ^ means not
+            //so match all not digits
+            // let selectLetters = new RegExp('^/D+');
+            let bar = document.querySelector('.currentstatus');
+            
+            //trying with hardcoded value because i am having issues getting fullBar.style.width
+            //to return anything, fullbar is currently 200px
+            let progressMade = (dur/200)*APP.currentSongTime;
+            //error checking to make sure the max value is the duration
+            if(progressMade >= dur) progressMade = dur;
+
+            //then set the bar
+            bar.style.width = `${progressMade}px`;
+
+            //find the two time p elements and then change them based on the progress in the song
+            let start = document.querySelector('p.start-time');
+            let end = document.querySelector('p.end-time');
 
             //start of logic to convert seconds values into proper time formats MM:SS
             //first we take the time value (in seconds) and we /60 and round down for the number of minutes
