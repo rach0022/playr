@@ -159,22 +159,29 @@ const APP = {
             let artist = document.createElement('p');
             let album = document.createElement('p');
             let duration = document.createElement('p');
+            let poster = document.createElement('img');
 
             //set the data-id attribute of the song entry
             entry.classList.add("song");
             entry.setAttribute("data-songid", song.id);
             
             //set the information of the song from each entry
+            //and the src and alt text for the image
             title.textContent = song.track;
             artist.textContent = `    ${song.artist}`;
             album.textContent = `    ${song.album}`;
             duration.textContent = `    ${song.length}`;
+            poster.src = APP.imageBaseUrl + song.poster_path;
+            console.log(poster.src);
+            poster.alt = `This is the Album cover for ${song.album} which was made by ${song.artist}`;
 
             //append the songs to the entry div and then to the song list
+            entry.appendChild(poster);
             entry.appendChild(title);
             entry.appendChild(artist);
             entry.appendChild(album);
             entry.appendChild(duration);
+            
 
             //add the event listeners for the entry objevts
             entry.addEventListener('click', APP.buildSongPage);
