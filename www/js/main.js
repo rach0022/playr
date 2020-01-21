@@ -294,8 +294,8 @@ const APP = {
     setPlayrListeners: function(){
 
         //event listeners for media controls
-        document.getElementById('play-btn').addEventListener('click', APP.play);
-        document.getElementById('pause-btn').addEventListener('click', APP.pause);
+        document.getElementById('play-pause-btn').addEventListener('click', APP.play);
+        // document.getElementById('pause-btn').addEventListener('click', APP.pause);
         document.getElementById('ff-btn').addEventListener('click', APP.fastforward);
         document.getElementById('rew-btn').addEventListener('click', APP.rewind);
         document.getElementById('up-btn').addEventListener('click', APP.volumeUp);
@@ -442,12 +442,37 @@ const APP = {
 
     //the function to play a song using cordova media plugin
     play: () => {
+        //if APP.currentTrack is null then lets initialize with the first song
+        //from the APP.audio array
+        //in case the user presses the play button before choosing a song
+        if(!APP.currentTrack){
+            APP.currentTrack_info = APP.audio[0];
+            APP.createMedia(APP.currentTrack_info);
+        }
+
         APP.currentTrack.play();
+
+        //start of code to change the html play button to a pause button
+        //first get a reference to the play button, remove the event listeners for the play
+        //function and switch them to the pause function and then add the pause button
+        //and switch the inner html to the pause button format
+        let playbtn = document.getElementById('play-pause-btn');
+        playbtn.removeEventListener('click', APP.play);
+        playbtn.addEventListener('click', APP.pause);
+        playbtn.innerHTML = 'Pause <i class="fas fa-pause"></i>';
     },
 
     //the function to pause a song using cordova media plugin
     pause: function() {
         APP.currentTrack.pause();
+
+        //start of code to change the html pause button to a play button
+        //its the reverse code of above, get a refernece, remove the pause add the play
+        //listeners and switch the inner html to the play button format
+        let playbtn = document.getElementById('play-pause-btn');
+        playbtn.removeEventListener('click', APP.pause);
+        playbtn.addEventListener('click', APP.play);
+        playbtn.innerHTML = 'Play <i class="fas fa-play"></i>';
     },
 
     //the volume up function, will check the current volume
