@@ -7,3 +7,62 @@ $brand-color: #98d6db;
 
 //number based variables
 $progressbar-width: 200px;
+
+//start of font face definitions for local hosting of google fonts from here:
+// https://google-webfonts-helper.herokuapp.com/fonts
+//I took 3 font weights (100, 300, 900) to be used in my code for styling
+//may trim these down to increase load time if i do not use one
+//following is the old usage for link to online hosted version
+// <link href="https://fonts.googleapis.com/css?family=Play|Roboto+Slab&display=swap" rel="stylesheet">
+
+/* roboto-slab-100 - latin */
+@font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 100;
+    src: local(''),
+         url('./google-fonts/roboto-slab-v10-latin-100.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('./google-fonts/roboto-slab-v10-latin-100.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+/* roboto-slab-regular - latin */
+@font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('./google-fonts/roboto-slab-v10-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('./google-fonts/roboto-slab-v10-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+/* roboto-slab-900 - latin */
+@font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 900;
+    src: local(''),
+         url('./google-fonts/roboto-slab-v10-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('./google-fonts/roboto-slab-v10-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+//For play we only have two avaliable font weights 400 (regular) and 700 (bold)
+/* play-regular - latin */
+@font-face {
+    font-family: 'Play';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Play Regular'), local('Play-Regular'),
+         url('./google-fonts/play-v11-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('./google-fonts/play-v11-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+/* play-700 - latin */
+@font-face {
+    font-family: 'Play';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Play Bold'), local('Play-Bold'),
+         url('./google-fonts/play-v11-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('./google-fonts/play-v11-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
