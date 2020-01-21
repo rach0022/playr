@@ -14,7 +14,7 @@
 - [x] (SORTA)The user will have to tap on an item in the list to play
 - [x] When an audio file reaches its end, the next item in the list should play
 - [x] Create an Object that contains all the information about the audio files
-- [x] Minimum of 5 songs in the playlist, from a minimum of two artists. Store all the audio files in a media folder inside the www folder. | Song are stored with a path property built using mediaBaseUrl + APP.audio[x]
+- [x] Minimum of 5 songs in the playlist, from a minimum of two artists. Store all the audio files in a media folder inside the www folder. | Song are stored with a path property built using mediaBaseUrl + APP.audio[i]
 - [x] User should be able to click on another item in the list to start it playing. This will stop the current one playing. Use a global property to hold the media object that is playing the audio.
 - [x] The user should be able to pause and resume the playback of the current song.
 - [x] There should be some visual indication when a song is playing.
