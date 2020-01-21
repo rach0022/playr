@@ -19,6 +19,7 @@
 - [x] The user should be able to pause and resume the playback of the current song.
 - [x] There should be some visual indication when a song is playing.
 - [ ] Work on progress bar animation
+- [ ] Host font awesome offline so the app does not need an internet connection
 - [ ] App design should reflect the Material Design guidelines
 
 #### example of json data: 
