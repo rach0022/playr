@@ -30,6 +30,18 @@ main {
     margin: 0;
     padding: 0;
 }
+
+//start of css for the player controls
+.player-controls{
+    position: absolute;
+    top: 70vh;
+    display: flex;
+    //need to change the z index so it is above the page
+    z-index: 1000;
+
+    //paddings borders and margins for the player controls
+
+}
 .page {
     box-sizing: border-box;
     min-height: 100vh;

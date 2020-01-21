@@ -61,6 +61,13 @@ main {
   padding: 0;
 }
 
+.player-controls {
+  position: absolute;
+  top: 70vh;
+  display: flex;
+  z-index: 1000;
+}
+
 .page {
   box-sizing: border-box;
   min-height: 100vh;
