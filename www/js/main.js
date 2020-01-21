@@ -240,14 +240,14 @@ const APP = {
 
         //set the current position and the end time as the text values
         if(APP.currentTrack){
-            let currentTime = APP.currentTrack.getCurrentPosition(time => {
-                if (time > -1){
-                    return time
-                }
-            });
+            // let currentTime = APP.currentTrack.getCurrentPosition(time => {
+            //     if (time > -1){
+            //         return time
+            //     }
+            // });
             let dur = APP.currentTrack.getDuration();
-            if(currentTime) start.textContent = currentTime.toString.padStart(2, '0');
-            end.textContent = dur.toString.padStart(2, '0');
+            // if(currentTime) start.textContent = currentTime.toString().padStart(2, '0');
+            end.textContent = dur.toString().padStart(2, '0');
         }
         
 
