@@ -226,6 +226,10 @@ const APP = {
         //find the title and put the song title
         document.querySelector('h3#title').textContent= APP.currentTrack_info.track;
         document.querySelector('h4#artist').textContent= APP.currentTrack_info.artist;
+        let album_art = document.getElementById('album-art');
+
+        album_art.src = APP.imageBaseUrl + APP.currentTrack_info.poster_path;
+        album_art.alt = `This is the Album cover for ${APP.currentTrack_info.album} which was made by ${APP.currentTrack_info.artist}`;
 
         //now to create the media object and play the users choice
         //using helper functions created below

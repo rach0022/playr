@@ -48,7 +48,7 @@ header{
 //start of css for the player controls
 .player-controls{
     position: fixed;
-    top: 80vh;
+    top: 78vh;
     width: 100%;
     background-color: $dark-shade;
     //need to change the z index so it is above the page (100)
@@ -130,11 +130,17 @@ header{
     .volume-controls{
         display: flex;
         flex-direction: column;
+        position: absolute;
+        left: 85vw;
     }
 
     //start of css for the song info on the current song page:
     #songinfo{
         font-size: 200px;
+    }
+    #album-art{
+        width: 250px;
+        height: 250px;
     }
 }
 

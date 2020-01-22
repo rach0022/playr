@@ -76,7 +76,7 @@ header {
 
 .player-controls {
   position: fixed;
-  top: 80vh;
+  top: 78vh;
   width: 100%;
   background-color: #3d65bd;
   z-index: 1000;
@@ -148,9 +148,15 @@ header {
 #currentsong .volume-controls {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  left: 85vw;
 }
 #currentsong #songinfo {
   font-size: 200px;
+}
+#currentsong #album-art {
+  width: 250px;
+  height: 250px;
 }
 
 .ticker {
