@@ -203,7 +203,7 @@ header h3 em {
   font-size: 16px;
   background-color: #67a5a9;
   margin-bottom: 40vh;
-  width: 80%;
+  width: 100%;
 }
 @media screen and (min-width: 700px) and (max-width: 1200px) {
   #songlist #songs {
@@ -211,6 +211,7 @@ header h3 em {
   }
 }
 #songlist #songs .song {
+  width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -219,6 +220,7 @@ header h3 em {
   box-shadow: 2px 2px 10px #67a5a9;
 }
 #songlist #songs .song #detail-wrapper p {
+  padding-left: 5px;
   padding-top: 6px;
   margin: 0 auto;
   margin-top: 0 auto;
