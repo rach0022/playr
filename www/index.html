@@ -22,38 +22,35 @@
 </head>
 <body>
     <main>
+        <header>
+            <h3>Android PLAYR APP by <em>RACH0022</em></h3>
+        </header>
+        </div>
         <div id="songlist" class="page active">
-            <div class="header">
-                <h3>Android PLAYR APP by <em>RACH0022</em></h3>
-            </div>
             <div id="songs"><!-- this is the output off all the songs from the song array  --></div>
-            <p><button data-href="#currentsong">Current Song<i class="fas fa-chevron-up"></i></button></p>
         </div>
         <div id="currentsong" class="page">
-            <div class="header" id="songinfo">
-                <h3 id="title">Current Song</h3>
-                <h4 id="artist">Artist</h4>
-            </div>
-            <div class="controls">
-                <div class="poster">
-                    <i class="fas fa-music"></i>
-                </div>
+            <div class="wrapper">
                 <div class="volume-controls">
                     <p><button id="up-btn">VUP<i class="fas fa-volume-up"></i></button></p>
                     <p><button id="down-btn">VDOWN<i class="fas fa-volume-down"></i></button></p>
                 </div>
-
+                <div id="songinfo">
+                    <h3 id="title">Current Song</h3>
+                    <h4 id="artist">Artist<i class="fas fa-music"></i></h4>
+                </div>
             </div>
-            <p><button data-href="#songlist">Song List<i class="fas fa-chevron-down"></i></button></p>
         </div>
         <div class="player-controls">
-            <!-- this is the current and end times p elements for the songinfo -->
-            <p class="start-time">00:00</p>
-            <p class="end-time">00:00</p>
-            <!-- this is the progress bar div that will move while the song plays  -->
-            <!-- starting with 0 value and 100 max on initial load -->
-            <div class="progressbar">
-                <progress value="0" max="100"></progress>
+            <button id="pagelink" data-href="currentsong"><i class="fas fa-chevron-up"></i></button>
+            <!-- <button data-href="songlist">Song List<i class="fas fa-chevron-down"></i></button> -->
+            <!-- this current time, progress bar and duration of the song outputs -->
+            <div class="progress">
+                <p class="start-time">00:00</p>
+                <div class="progressbar">
+                    <progress value="75" max="100"></progress>
+                </div>
+                <p class="end-time">00:00</p>
             </div>
             <!-- start of media controls like play pause volume forward and backward  -->
             <div class="playback-controls">

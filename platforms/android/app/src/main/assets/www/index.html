@@ -22,55 +22,45 @@
 </head>
 <body>
     <main>
+        <header>
+            <h3>Android PLAYR APP by <em>RACH0022</em></h3>
+        </header>
+        </div>
         <div id="songlist" class="page active">
-            <div class="header">
-                <h3>Android PLAYR APP by <em>RACH0022</em></h3>
-            </div>
-            <div id="songs">
-                <!-- this is the output off all the songs from the song array  -->
-            </div>
-            <!-- replace below with <i class="fas fa-chevron-up"></i> -->
-            <a href="#currentsong" data-href="currentsong">Current Song </a>
+            <div id="songs"><!-- this is the output off all the songs from the song array  --></div>
         </div>
         <div id="currentsong" class="page">
-            <div class="header" id="songinfo">
-                <h3 id="title">Current Song</h3>
-                <h4 id="artist">Artist</h4>
-            </div>
-            <div class="controls">
-                <div class="poster">
-                    <i class="fas fa-music"></i>
-                </div>
-                <div class="ticker"></div>
-
-                <!-- this is the progress bar div that will move while the song plays  -->
-                <!-- starting with 0 value and 100 max on initial load -->
-                <div class="progressbar">
-                    <progress value="0" max="100"></progress>
-                </div>
-                
-                <p class="start-time"></p>
-                <p class="end-time"></p>
-
-                <!-- start of media controls like play pause volume forward and backward  -->
-                <div class="playback-controls">
-                    <p><button  id="play-pause-btn">Play <i class="fas fa-play"></i></button></p>
-                    <!-- <p><button id="pause-btn">Pause <i class="fas fa-pause"></i></button></p> -->
-                    <p><button id="ff-btn">FOR<i class="fas fa-step-forward"></i></button></p>
-                    <p><button id="rew-btn">REW<i class="fas fa-step-backward"></i></button></p>
-                    
-
-                </div>
-                
+            <div class="wrapper">
                 <div class="volume-controls">
                     <p><button id="up-btn">VUP<i class="fas fa-volume-up"></i></button></p>
                     <p><button id="down-btn">VDOWN<i class="fas fa-volume-down"></i></button></p>
                 </div>
-
+                <div id="songinfo">
+                    <h3 id="title">Current Song</h3>
+                    <h4 id="artist">Artist<i class="fas fa-music"></i></h4>
+                </div>
             </div>
-            <a href="#songlist" class="link" data-href="songlist">Song List</a>
+        </div>
+        <div class="player-controls">
+            <button id="pagelink" data-href="currentsong"><i class="fas fa-chevron-up"></i></button>
+            <!-- <button data-href="songlist">Song List<i class="fas fa-chevron-down"></i></button> -->
+            <!-- this current time, progress bar and duration of the song outputs -->
+            <div class="progress">
+                <p class="start-time">00:00</p>
+                <div class="progressbar">
+                    <progress value="75" max="100"></progress>
+                </div>
+                <p class="end-time">00:00</p>
+            </div>
+            <!-- start of media controls like play pause volume forward and backward  -->
+            <div class="playback-controls">
+                <p><button id="rew-btn">REW<i class="fas fa-step-backward"></i></button></p>
+                <p><button  id="play-pause-btn">Play <i class="fas fa-play"></i></button></p>
+                <p><button id="ff-btn">FOR<i class="fas fa-step-forward"></i></button></p>
+            </div>
 
-            
+            <!-- the ticker animation output element -->
+            <div class="ticker"></div>
         </div>
     </main>
     <!-- <p><i class="fab fa-facebook"></i></p> -->

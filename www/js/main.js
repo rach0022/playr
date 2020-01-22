@@ -126,8 +126,9 @@ const APP = {
     nav: ev => {
         ev.preventDefault();
         ev.stopPropagation();
-        let link = ev.target;
+        let link = ev.currentTarget;
         let target = link.getAttribute("data-href");
+
         //change the display of the "page"
         APP.showPage(target);
         //use switch case with target for page specific things
@@ -135,6 +136,20 @@ const APP = {
     showPage: target => {
         document.querySelector(".active").classList.remove("active");
         document.querySelector(`#${target}`).classList.add("active");
+        
+
+        //scroll the window to the top of the page when switch to a new page
+        window.scrollTo(0,0);
+
+        //depending on which page switch the button html to the proper page
+        let btn = document.querySelector('button#pagelink');
+        if(target == 'songlist'){
+            btn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            btn.setAttribute("data-href", 'currentsong');
+        } else if (target == 'currentsong'){
+            btn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            btn.setAttribute("data-href", 'songlist');
+        }
     },
 
     //starting of code for music player:
