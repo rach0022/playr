@@ -219,8 +219,12 @@ header h3 em {
   background-color: #543dbd;
   box-shadow: 2px 2px 10px #67a5a9;
 }
+#songlist #songs .song #detail-wrapper {
+  width: 100%;
+}
 #songlist #songs .song #detail-wrapper p {
-  padding-left: 5px;
+  text-align: right;
+  padding-right: 2vw;
   padding-top: 6px;
   margin: 0 auto;
   margin-top: 0 auto;
