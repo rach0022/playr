@@ -21,7 +21,8 @@
 - [ ] Work on progress bar animation (use CSS transitions to make it increment slower)
 - [x] Host font awesome offline so the app does not need an internet connection
 - [x] Host google fonts offline so the app does not need an internet connection
-- [ ] Create a Splash Screen and Icons (preferably adaptive icons)
+- [x] Create a Splash Screen and Icons (preferably adaptive icons)
+- [ ] Fix splash screen and Foreground icon for different pixel densities
 - [ ] App design should reflect the Material Design guidelines
 
 #### example of json data: 

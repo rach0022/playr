@@ -12,12 +12,37 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
+    <allow-intent href="tel:6138698795" />
+    <allow-intent href="sms:6138698795" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <!-- adaptive icons for android  -->
+        <icon background="res\icon\android\icon-background\playr-icon-bg-ldpi.png" density="ldpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-ldpi.png" />
+        <icon background="res\icon\android\icon-background\playr-icon-bg-mdpi.png" density="mdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-mdpi.png" />
+        <icon background="res\icon\android\icon-background\playr-icon-bg-hdpi.png" density="hdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-hdpi.png" />
+        <icon background="res\icon\android\icon-background\playr-icon-bg-xhdpi.png" density="xhdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-xhdpi.png" />
+        <icon background="res\icon\android\icon-background\playr-icon-bg-xxhdpi.png" density="xxhdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-xxhdpi.png" />
+        <icon background="res\icon\android\icon-background\playr-icon-bg-xxxhdpi.png" density="xxxhdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-xxxhdpi.png" />
+
+        <!-- splashscreens for landscape  -->
+         <splash src="res\splashscreen\android\playr-splashscreen-Landscape-ldpi.png" density="land-ldpi"/>
+         <splash src="res\splashscreen\android\playr-splashscreen-Landscape-mdpi.png" density="land-mdpi"/>
+         <splash src="res\splashscreen\android\playr-splashscreen-Landscape-hdpi.png" density="land-hdpi"/>
+         <splash src="res\splashscreen\android\playr-splashscreen-Landscape-xhdpi.png" density="land-xhdpi"/>
+         <splash src="res\splashscreen\android\playr-splashscreen-Landscape-xxhdpi.png" density="land-xxhdpi"/>
+         <splash src="res\splashscreen\android\playr-splashscreen-Landscape-xxxhdpi.png" density="land-xxxhdpi"/>
+        <!-- splash screens for portrait  -->
+        <splash src="res\splashscreen\android\playr-splashscreen-Portrait-ldpi.png" density="port-ldpi"/>
+        <splash src="res\splashscreen\android\playr-splashscreen-Portrait-mdpi.png" density="port-mdpi"/>
+        <splash src="res\splashscreen\android\playr-splashscreen-Portrait-hdpi.png" density="port-hdpi"/>
+        <splash src="res\splashscreen\android\playr-splashscreen-Portrait-xhdpi.png" density="port-xhdpi"/>
+        <splash src="res\splashscreen\android\playr-splashscreen-Portrait-xxhdpi.png" density="port-xxhdpi"/>
+        <splash src="res\splashscreen\android\playr-splashscreen-Portrait-xxxhdpi.png" density="port-xxxhdpi"/>
+        <!-- splash screen parameters like how long it displays and if it displays  -->
+        <preference name="AutoHideSplashScreen" value="true" />
+        <preference name="SplashScreenDelay" value="5000" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

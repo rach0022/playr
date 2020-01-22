@@ -27,10 +27,30 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
+    <allow-intent href="tel:6138698795" />
+    <allow-intent href="sms:6138698795" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
+    <icon background="res\icon\android\icon-background\playr-icon-bg-ldpi.png" density="ldpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-ldpi.png" />
+    <icon background="res\icon\android\icon-background\playr-icon-bg-mdpi.png" density="mdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-mdpi.png" />
+    <icon background="res\icon\android\icon-background\playr-icon-bg-hdpi.png" density="hdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-hdpi.png" />
+    <icon background="res\icon\android\icon-background\playr-icon-bg-xhdpi.png" density="xhdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-xhdpi.png" />
+    <icon background="res\icon\android\icon-background\playr-icon-bg-xxhdpi.png" density="xxhdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-xxhdpi.png" />
+    <icon background="res\icon\android\icon-background\playr-icon-bg-xxxhdpi.png" density="xxxhdpi" foreground="res\icon\android\icon-foreground\playr-icon-fg-xxxhdpi.png" />
+    <splash density="land-ldpi" src="res\splashscreen\android\playr-splashscreen-Landscape-ldpi.png" />
+    <splash density="land-mdpi" src="res\splashscreen\android\playr-splashscreen-Landscape-mdpi.png" />
+    <splash density="land-hdpi" src="res\splashscreen\android\playr-splashscreen-Landscape-hdpi.png" />
+    <splash density="land-xhdpi" src="res\splashscreen\android\playr-splashscreen-Landscape-xhdpi.png" />
+    <splash density="land-xxhdpi" src="res\splashscreen\android\playr-splashscreen-Landscape-xxhdpi.png" />
+    <splash density="land-xxxhdpi" src="res\splashscreen\android\playr-splashscreen-Landscape-xxxhdpi.png" />
+    <splash density="port-ldpi" src="res\splashscreen\android\playr-splashscreen-Portrait-ldpi.png" />
+    <splash density="port-mdpi" src="res\splashscreen\android\playr-splashscreen-Portrait-mdpi.png" />
+    <splash density="port-hdpi" src="res\splashscreen\android\playr-splashscreen-Portrait-hdpi.png" />
+    <splash density="port-xhdpi" src="res\splashscreen\android\playr-splashscreen-Portrait-xhdpi.png" />
+    <splash density="port-xxhdpi" src="res\splashscreen\android\playr-splashscreen-Portrait-xxhdpi.png" />
+    <splash density="port-xxxhdpi" src="res\splashscreen\android\playr-splashscreen-Portrait-xxxhdpi.png" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="5000" />
 </widget>
