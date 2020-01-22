@@ -118,17 +118,22 @@ header{
         flex-direction: row;
         #play-pause-btn{
             @include circular-w-h(60px);
-            
+        }
+        
+        #rew-btn, #step-backward{
+            margin-right: 8vw;
+            @include circular-w-h(40px);
+        }
+        #ff-btn, #step-forward{
+            margin-left: 8vw;
+            @include circular-w-h(40px);
 
         }
         #rew-btn{
-            margin-right: 18vw;
-            @include circular-w-h(40px);
+            margin-right: 3vw;
         }
         #ff-btn{
-            margin-left: 18vw;
-            @include circular-w-h(40px);
-
+            margin-left: 3vw;
         }
     }
     @media #{$tablet_query}{
