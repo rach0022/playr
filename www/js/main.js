@@ -31,6 +31,7 @@ const APP = {
     //and error codes given back by the cordova media plugin
     currentTrack: null,
     currentTrack_info: null,
+    currentSongIndex: null,
     status: {
         '0': 'MEDIA_NONE',
         '1': 'MEDIA_STARTING',
@@ -363,6 +364,8 @@ const APP = {
         // document.getElementById('pause-btn').addEventListener('click', APP.pause);
         document.getElementById('ff-btn').addEventListener('click', APP.fastforward);
         document.getElementById('rew-btn').addEventListener('click', APP.rewind);
+        document.getElementById('step-forward').addEventListener('click', APP.step_forward);
+        document.getElementById('step-backward').addEventListener('click', APP.step_backward);
         document.getElementById('up-btn').addEventListener('click', APP.volumeUp);
         document.getElementById('down-btn').addEventListener('click', APP.volumeDown);
 
@@ -607,6 +610,30 @@ const APP = {
                 APP.currentTrack.seekTo(0);
             }
         });
+    },
+
+
+    //function to "step forward" play the next song
+    step_forward: function(){
+        if(APP.currentTrack) APP.playNextSong();
+    },
+
+    //function to "step backward" go to the previous
+    step_backward: function(){
+        //first get a reference to the current index number of the song that was just played
+        let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
+
+        //then increment the index by one and check if it is still within the arry bound otherwise set to zero
+        index --;
+        if(index < 0) index = APP.audio.length - 1;
+        console.log(index);
+
+        //since it is stopped we know that the song is released so just set the new
+        //currentsong_info and create the media (do not play the song yet)
+        APP.currentTrack_info = APP.audio[index];
+        console.log(APP.currentTrack_info);
+        APP.createMedia(APP.currentTrack_info);
+        APP.play();
     }
 
 };
