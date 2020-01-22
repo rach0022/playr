@@ -373,7 +373,7 @@ const APP = {
             console.log('system has paused the android playr app');
             // APP.currentTrack.getCurrentPosition(APP.currentPositionGood, APP.currentPositionFail);
             // APP.currentTrack.release();
-            APP.pause();
+            // APP.pause();
 
         });
         document.addEventListener('menubutton', () =>{
@@ -394,7 +394,7 @@ const APP = {
             // APP.currentTrack = new Media(APP.mediaBaseURL+this.currentTrack_info.path,
             //     APP.mediaSuccess, APP.mediaFailure, APP.mediaStatusChange);
             console.log("APP is resumed");
-            APP.play();
+            // APP.play();
         });
     },
 
