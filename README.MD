@@ -26,6 +26,8 @@
 - [ ] Fix Foreground icon with a margin
 - [x] Fix Media Playback when Pausing and Resuming the Application
 - [x] App design should reflect the Material Design guidelines
+- [x] Sort songs based on track name
+- [ ] Add Song Groups based on letter and display the title of each group (A-Z)
 
 #### example of json data: 
 ```js

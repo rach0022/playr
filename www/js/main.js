@@ -158,7 +158,12 @@ const APP = {
     //html elements for the song list
     music_init: audio => {
 
-        //first we will locate the output location for the song data
+        //first lets sort the song array alphabetically
+        //using an arrow function with the return value being
+        //an if statement checking to compare the track value of the song
+        audio = audio.sort((a,b) => (a.track > b.track) ? 1:-1)
+
+        //locate the output location for the song data
         //this will be a flex item
         //that will have all the songs
         let songs = document.getElementById('songs');
