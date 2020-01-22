@@ -341,7 +341,7 @@ const APP = {
         //first get a reference to the ticker output element in the html document
         //then increment the ticker and make sure it is within ticker text range and create the ticker text
         let ticker = document.querySelector('.ticker');
-        let tickerText = `|| ${APP.currentTrack_info.track} || ${APP.currentTrack_info.album} || ${APP.currentTrack_info.artist}`
+        let tickerText = `|| ${APP.currentTrack_info.track} || ${APP.currentTrack_info.album} || ${APP.currentTrack_info.artist}|| ${APP.currentTrack_info.track} || ${APP.currentTrack_info.album} || ${APP.currentTrack_info.artist}`
         APP.tickerIndex ++;
         
         if(APP.tickerIndex >= tickerText.length) APP.tickerIndex = 0;
