@@ -163,10 +163,10 @@ const APP = {
         //depending on which page switch the button html to the proper page
         let btn = document.querySelector('button#pagelink');
         if(target == 'songlist'){
-            btn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            btn.innerHTML = '<i class="fas fa-music"></i>';
             btn.setAttribute("data-href", 'currentsong');
         } else if (target == 'currentsong'){
-            btn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            btn.innerHTML = '<i class="fas fa-list"></i>';
             btn.setAttribute("data-href", 'songlist');
         }
     },

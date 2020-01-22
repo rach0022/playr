@@ -248,6 +248,7 @@ button {
   background: transparent;
   border: 1px solid #543dbd;
   box-shadow: 0 2px 3px #543dbd;
+  outline: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -263,8 +264,8 @@ button i {
   left: 3vw;
   border: 2px solid #543dbd;
   z-index: 1111;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */

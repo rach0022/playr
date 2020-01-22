@@ -23,7 +23,7 @@
 - [x] Host google fonts offline so the app does not need an internet connection
 - [x] Create a Splash Screen and Icons (preferably adaptive icons)
 - [x] Fix splash screen (fixed)
-- [ ] Fix Foreground icon with a margin
+- [x] Fix Foreground icon with a margin
 - [x] Fix Media Playback when Pausing and Resuming the Application
 - [x] App design should reflect the Material Design guidelines
 - [x] Sort songs based on track name

@@ -251,6 +251,7 @@ button{
     background: transparent;
     border: 1px solid $text-bg;
     box-shadow: 0 2px 3px $text-bg;
+    outline: none;
     @include center();
     i{
         color: $text-bg;
@@ -263,5 +264,5 @@ button{
     // transform: scale(2);
     border: 2px solid $text-bg;
     z-index: 1111;
-    @include circular-w-h(30px)
+    @include circular-w-h(40px)
 }
