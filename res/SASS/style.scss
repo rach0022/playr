@@ -277,3 +277,9 @@ button{
     z-index: 1111;
     @include circular-w-h(40px)
 }
+
+@media #{$tablet_query}{
+    // main{
+    //     background-color: black;
+    // }
+}

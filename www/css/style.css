@@ -279,4 +279,10 @@ button i {
   height: 40px;
 }
 
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  main {
+    background-color: black;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

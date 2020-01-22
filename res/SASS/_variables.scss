@@ -21,6 +21,9 @@ $analogous-omega: #543dbd;
 $triadic-prime: #943dbd;
 $triadic-omega: #bd3d66;
 
+//media queries as variables:
+$tablet_query: "screen and (min-width: 700px) and (max-width: 1200px)";
+
 
 //number based variables
 $progressbar-width: 200px;
