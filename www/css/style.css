@@ -88,6 +88,16 @@ header h3 {
 header h3 em {
   color: #543dbd;
 }
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  header h3 {
+    top: -8px;
+  }
+}
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  header {
+    height: auto;
+  }
+}
 
 .player-controls {
   position: fixed;
@@ -145,6 +155,11 @@ header h3 em {
   width: 40px;
   height: 40px;
 }
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .player-controls {
+    top: 60vh;
+  }
+}
 
 .page {
   box-sizing: border-box;
@@ -183,6 +198,11 @@ header h3 em {
   background-color: #67a5a9;
   margin-bottom: 40vh;
   width: 80%;
+}
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  #songlist #songs {
+    margin-top: 10vh;
+  }
 }
 #songlist #songs .song {
   display: flex;
@@ -235,8 +255,18 @@ header h3 em {
   margin: 0;
   box-shadow: 2px 2px 4px #67a5a9;
 }
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  #currentsong .wrapper #songinfo p {
+    top: 20vh;
+  }
+}
 #currentsong .wrapper #songinfo #title {
   top: 43vh;
+}
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  #currentsong .wrapper #songinfo #title {
+    top: 30vh;
+  }
 }
 
 .ticker {
@@ -277,12 +307,6 @@ button i {
   z-index: 1111;
   width: 40px;
   height: 40px;
-}
-
-@media screen and (min-width: 700px) and (max-width: 1200px) {
-  main {
-    background-color: black;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */
