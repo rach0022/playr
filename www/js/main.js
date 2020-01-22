@@ -230,8 +230,8 @@ const APP = {
         APP.showPage('currentsong');
 
         //find the title and put the song title
-        document.querySelector('h3#title').textContent= APP.currentTrack_info.track;
-        document.querySelector('h4#artist').textContent= APP.currentTrack_info.artist;
+        document.querySelector('#title').textContent= APP.currentTrack_info.track;
+        document.querySelector('#artist').textContent= APP.currentTrack_info.artist;
         let album_art = document.getElementById('album-art');
 
         album_art.src = APP.imageBaseUrl + APP.currentTrack_info.poster_path;
@@ -248,8 +248,12 @@ const APP = {
         //first we will get refrences to the html elements and set their text content
         //to the values from the new song
         //find the title and put the song title
-        document.querySelector('h3#title').textContent= APP.currentTrack_info.track;
-        document.querySelector('h4#artist').textContent= APP.currentTrack_info.artist;
+        document.querySelector('#title').textContent= APP.currentTrack_info.track;
+        document.querySelector('#artist').textContent= APP.currentTrack_info.artist;
+
+        let album_art = document.getElementById('album-art');
+        album_art.src = APP.imageBaseUrl + APP.currentTrack_info.poster_path;
+        album_art.alt = `This is the Album cover for ${APP.currentTrack_info.album} which was made by ${APP.currentTrack_info.artist}`;
     },
 
 
@@ -491,7 +495,7 @@ const APP = {
         let playbtn = document.getElementById('play-pause-btn');
         playbtn.removeEventListener('click', APP.play);
         playbtn.addEventListener('click', APP.pause);
-        playbtn.innerHTML = 'Pause <i class="fas fa-pause"></i>';
+        playbtn.innerHTML = '<i class="fas fa-pause"></i>';
     },
 
     //the function to pause a song using cordova media plugin
@@ -504,7 +508,7 @@ const APP = {
         let playbtn = document.getElementById('play-pause-btn');
         playbtn.removeEventListener('click', APP.pause);
         playbtn.addEventListener('click', APP.play);
-        playbtn.innerHTML = 'Play <i class="fas fa-play"></i>';
+        playbtn.innerHTML = '<i class="fas fa-play"></i>';
     },
 
     //the volume up function, will check the current volume
