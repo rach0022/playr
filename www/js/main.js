@@ -17,6 +17,7 @@ const APP = {
     //to change the page and store which page we are currently on
     active: null,
     pages: [],
+    baseURL: null,
 
     //base url for the filepath to the song assets in the www/media folder
     //volume is used to store the value of the current volume level for the PLAYR app
@@ -102,7 +103,7 @@ const APP = {
         }
     ],
     init: () => {
-        APP.active = document.querySelector(".active");
+        APP.active = document.querySelector(".active").id;
         APP.pages = document.querySelectorAll(".page");
         console.log(APP.pages);
         let links = document.querySelectorAll("[data-href]");
@@ -114,7 +115,22 @@ const APP = {
             link.addEventListener("click", APP.nav);
         });
 
-
+        //Start of using the history API to control the back button
+        //get the base url to use in the app
+        APP.baseURL = location.href.split("#")[0];
+        let hash = location.hash;
+        //check for current url hash
+        if (hash && hash != "#") {
+            //there is an id in the url
+            APP.active = hash.replace("#", "");
+            APP.showPage(APP.active);
+        } else {
+            //no url so use our default
+            history.replaceState({}, APP.active, `${APP.baseURL}#${APP.active}`);
+            APP.showPage(APP.active);
+        }
+        //handle the back button
+        window.addEventListener("popstate", APP.backbutton);
 
         //initialize the song list with the songs in our song array
         APP.music_init(APP.audio);
@@ -129,11 +145,14 @@ const APP = {
         let link = ev.currentTarget;
         let target = link.getAttribute("data-href");
 
+        //update URL
+        history.pushState({}, target, `${APP.baseURL}#${target}`);
         //change the display of the "page"
         APP.showPage(target);
         //use switch case with target for page specific things
     },
     showPage: target => {
+        console.log(target);
         document.querySelector(".active").classList.remove("active");
         document.querySelector(`#${target}`).classList.add("active");
         
@@ -151,6 +170,11 @@ const APP = {
             btn.setAttribute("data-href", 'songlist');
         }
     },
+    backbutton: ev => {
+        //get the id
+        let target = location.hash.replace("#", "");
+        APP.showPage(target);
+    }, 
 
     //starting of code for music player:
     //this function will take in an audio array
