@@ -18,13 +18,14 @@
 - [x] User should be able to click on another item in the list to start it playing. This will stop the current one playing. Use a global property to hold the media object that is playing the audio.
 - [x] The user should be able to pause and resume the playback of the current song.
 - [x] There should be some visual indication when a song is playing.
-- [ ] Work on progress bar animation (use CSS transitions to make it increment slower)
+- [ ] Work on progress bar animation (use CSS transitions to make it increment slower) and make it look nicer with CSS 
 - [x] Host font awesome offline so the app does not need an internet connection
 - [x] Host google fonts offline so the app does not need an internet connection
 - [x] Create a Splash Screen and Icons (preferably adaptive icons)
-- [ ] Fix splash screen (fixed)
-- [x] Fix Foreground icon with a margin
-- [ ] App design should reflect the Material Design guidelines
+- [x] Fix splash screen (fixed)
+- [ ] Fix Foreground icon with a margin
+- Fix Media Playback when Pausing and Resuming the Application
+- [x] App design should reflect the Material Design guidelines
 
 #### example of json data: 
 ```js
