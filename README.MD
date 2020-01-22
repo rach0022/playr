@@ -24,7 +24,7 @@
 - [x] Create a Splash Screen and Icons (preferably adaptive icons)
 - [x] Fix splash screen (fixed)
 - [ ] Fix Foreground icon with a margin
-- Fix Media Playback when Pausing and Resuming the Application
+- [x] Fix Media Playback when Pausing and Resuming the Application
 - [x] App design should reflect the Material Design guidelines
 
 #### example of json data: 

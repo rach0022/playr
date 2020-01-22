@@ -343,7 +343,8 @@ const APP = {
             //to save on memory and will record the current positon before doing that
             console.log('system has paused the android playr app');
             // APP.currentTrack.getCurrentPosition(APP.currentPositionGood, APP.currentPositionFail);
-            APP.currentTrack.release();
+            // APP.currentTrack.release();
+            APP.pause();
 
         });
         document.addEventListener('menubutton', () =>{
@@ -364,6 +365,7 @@ const APP = {
             // APP.currentTrack = new Media(APP.mediaBaseURL+this.currentTrack_info.path,
             //     APP.mediaSuccess, APP.mediaFailure, APP.mediaStatusChange);
             console.log("APP is resumed");
+            APP.play();
         });
     },
 
