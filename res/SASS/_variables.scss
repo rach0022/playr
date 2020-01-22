@@ -2,9 +2,25 @@
 $light-shade: #f4f2ed;
 $light-accent: #888d84;
 $dark-shade: #3d65bd;
-$dark-accent: #7d6e75; 
+$dark-accent: #7d6e75;
+$brand-accent: #67a5a9;
 $brand-color: #98d6db;
-$text-bg: #0B0C10;
+// $text-bg: #0B0C10;
+$text-bg: #543dbd;
+
+//shadowcolor is used to set all the drop shadow effects on the page
+//can be the same value as another variable just for ease of change 
+//I am making its own varaible
+$shadow-color: $brand-accent;
+
+//using brand-color to generate a color pallette
+//from https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+$complementary-color: #bd943d;
+$analogous-prime: #3da6bd;
+$analogous-omega: #543dbd;
+$triadic-prime: #943dbd;
+$triadic-omega: #bd3d66;
+
 
 //number based variables
 $progressbar-width: 200px;

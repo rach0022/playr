@@ -23,7 +23,7 @@ const APP = {
     //default volume for the app is 50% or 0.5
     mediaBaseURL: 'file:///android_asset/www/media/',
     imageBaseUrl: 'file:///android_asset/www/img/',
-    volume: 0.5,
+    volume: 1.0,
     
     //the media object 'currentTrack' used by the cordova media plugin
     //also the 'status' and 'err' object are used to understand the different status

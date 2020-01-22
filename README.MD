@@ -22,7 +22,8 @@
 - [x] Host font awesome offline so the app does not need an internet connection
 - [x] Host google fonts offline so the app does not need an internet connection
 - [x] Create a Splash Screen and Icons (preferably adaptive icons)
-- [ ] Fix splash screen (fixed) and Foreground icon for different pixel densities
+- [ ] Fix splash screen (fixed)
+- [x] Fix Foreground icon with a margin
 - [ ] App design should reflect the Material Design guidelines
 
 #### example of json data: 
