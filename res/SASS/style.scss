@@ -49,6 +49,10 @@ header{
         font-size: 1.4em;
         position: relative;
         top: 4px;
+        color: $text-bg;
+        em{
+            color: $text-bg;
+        }
     }
 
 
@@ -80,14 +84,20 @@ header{
         align-items: center;
         width: 100%;
         font-weight: 700;
+        p{
+            color: $text-bg;
+        }
 
         //styles for the progress div
         .progressbar{
-            border-radius: 25px;
             // background-color: red;
+            align-self: center;
+            position: relative;
+            top: -4px;
             progress{
+                background-color: $text-bg;
                 width: 200px;
-                height: 20px;
+                height: 10px;
             }
         }
     }
@@ -234,6 +244,7 @@ header{
     padding-top: 4vh;
     margin-bottom: 110px;
     overflow: hidden;
+    color: $text-bg;
 
 
     //this method to fix this was taken from

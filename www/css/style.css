@@ -83,6 +83,10 @@ header h3 {
   font-size: 1.4em;
   position: relative;
   top: 4px;
+  color: #543dbd;
+}
+header h3 em {
+  color: #543dbd;
 }
 
 .player-controls {
@@ -103,12 +107,18 @@ header h3 {
   width: 100%;
   font-weight: 700;
 }
+.player-controls .progress p {
+  color: #543dbd;
+}
 .player-controls .progress .progressbar {
-  border-radius: 25px;
+  align-self: center;
+  position: relative;
+  top: -4px;
 }
 .player-controls .progress .progressbar progress {
+  background-color: #543dbd;
   width: 200px;
-  height: 20px;
+  height: 10px;
 }
 .player-controls .playback-controls {
   display: flex;
@@ -237,6 +247,7 @@ header h3 {
   padding-top: 4vh;
   margin-bottom: 110px;
   overflow: hidden;
+  color: #543dbd;
   white-space: nowrap;
 }
 
