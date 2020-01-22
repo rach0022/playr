@@ -43,6 +43,12 @@
         <!-- splash screen parameters like how long it displays and if it displays  -->
         <preference name="AutoHideSplashScreen" value="true" />
         <preference name="SplashScreenDelay" value="5000" />
+        <preference name="SplashMaintainAspectRatio" value="false" />
+        <preference name="FadeSplashScreen" value="true"/>
+        <preference name="FadeSplashScreenDuration" value="750"/>
+        <preference name="ShowSplashScreenSpinner" value="true"/>
+        <preference name="SplashScreenSpinnerColor" value="white" />
+
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

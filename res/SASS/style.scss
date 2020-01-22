@@ -108,7 +108,8 @@ header{
 
         //putting padding on the bottom of the songs so we 
         //are able to scroll past the player controls
-        padding-bottom: 40vh;
+        margin-bottom: 40vh;
+        width: 80%;
         .song{
             padding-bottom: 10px;
         }
@@ -148,7 +149,7 @@ header{
 .ticker{
     // position: relative;
     // left: 25px;
-    width: 200px;
+    width: 100%;
     height: 35px;
     margin-bottom: 100px;
     overflow: hidden;

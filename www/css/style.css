@@ -129,7 +129,8 @@ header {
   flex-direction: column;
   font-size: 16px;
   background-color: #7d6e75;
-  padding-bottom: 40vh;
+  margin-bottom: 40vh;
+  width: 80%;
 }
 #songlist #songs .song {
   padding-bottom: 10px;
@@ -160,7 +161,7 @@ header {
 }
 
 .ticker {
-  width: 200px;
+  width: 100%;
   height: 35px;
   margin-bottom: 100px;
   overflow: hidden;

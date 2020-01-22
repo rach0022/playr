@@ -60,7 +60,7 @@ const APP = {
             artist: "At The Drive-In",
             track: "Invalid Letter Dept.",
             album: "Relationship of Command",
-            length: 0,
+            length: "06:06",
             path: "at-the-drive-in/invalid_letter_dept.mp3",
             poster_path: "album-covers/relationship-of-command.jpg"
         },
@@ -69,7 +69,7 @@ const APP = {
             artist: "At The Drive-In",
             track: "One Armed Scissor",
             album: "Relationship of Command",
-            length: 0,
+            length: "04:20",
             path: "at-the-drive-in/one_armed_scissor.mp3",
             poster_path: "album-covers/relationship-of-command.jpg"
         },
@@ -78,7 +78,7 @@ const APP = {
             artist: "MGMT",
             track: "Electric Feel",
             album: "Oracular Spectacular",
-            length: 0,
+            length: "03:50",
             path: "mgmt/electric_feel.mp3",
             poster_path: "album-covers/oracular-spectacular.jpg"
         },
@@ -87,7 +87,7 @@ const APP = {
             artist: "Cloud Nothings",
             track: "Stay Useless",
             album: "Attack on Memory",
-            length: 0,
+            length: "02:45",
             path: "cloud-nothings/stay-useless.mp3",
             poster_path: "album-covers/attack-on-memory.jpg"
         },
@@ -96,7 +96,7 @@ const APP = {
             artist: "Cloud Nothings",
             track: "Fall In",
             album: "Attack on Memory",
-            length: 0,
+            length: "03:14",
             path: "cloud-nothings/fall-in.mp3",
             poster_path: "album-covers/attack-on-memory.jpg"
         }
@@ -176,6 +176,10 @@ const APP = {
             let duration = document.createElement('p');
             let poster = document.createElement('img');
 
+            //create any wrapping elements
+            let detail_wrapper = document.createElement('div');
+            detail_wrapper.id = "detail-wrapper";
+
             //set the data-id attribute of the song entry
             entry.classList.add("song");
             entry.setAttribute("data-songid", song.id);
@@ -191,11 +195,13 @@ const APP = {
             poster.alt = `This is the Album cover for ${song.album} which was made by ${song.artist}`;
 
             //append the songs to the entry div and then to the song list
+            //starting with the detail wrapper
             entry.appendChild(poster);
-            entry.appendChild(title);
-            entry.appendChild(artist);
-            entry.appendChild(album);
-            entry.appendChild(duration);
+            detail_wrapper.appendChild(title);
+            detail_wrapper.appendChild(artist);
+            detail_wrapper.appendChild(album);
+            detail_wrapper.appendChild(duration);
+            entry.appendChild(detail_wrapper);
             
 
             //add the event listeners for the entry objevts
