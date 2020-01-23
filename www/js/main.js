@@ -466,8 +466,8 @@ const APP = {
                 //we can increment the progress bar here, while the ticker runs independantly
                 //or resume it based on the current progress of the song
                 //set the interval for the ticker feature
-                APP.tickerTimeout = setInterval(APP.tickerFeature, 100);
-                APP.progressTimeout = setInterval(APP.progressBar, 400);
+                APP.tickerTimeout = setInterval(APP.tickerFeature, 50);
+                APP.progressTimeout = setInterval(APP.progressBar, 200);
                 break;
             
             case 3:
