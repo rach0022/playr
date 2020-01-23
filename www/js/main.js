@@ -402,6 +402,13 @@ const APP = {
             console.log("APP is resumed");
             // APP.play();
         });
+
+        //to stop scrolling on the album art or song details page I am addinga  scroll
+        //event with this callback function to prevent default and stop propogation of the scroll
+        // document.getElementById('currentsong').addEventListener('scroll', ev =>{
+        //     ev.preventDefault();
+        //     ev.stopPropagation();
+        // })
     },
 
     //Success callback function for the get current positon media function
@@ -660,7 +667,6 @@ const APP = {
             }
         }
     }
-
 };
 
 //copied from https://prof3ssorst3v3.github.io/mad9014/modules/week13/#domcontentloaded-vs-deviceready

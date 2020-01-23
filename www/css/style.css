@@ -241,6 +241,7 @@ header h3 em {
   text-align: center;
   margin: 0 auto;
   top: 15vh;
+  position: fixed;
 }
 #currentsong .wrapper .volume-controls {
   display: flex;
