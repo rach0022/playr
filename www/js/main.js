@@ -448,30 +448,35 @@ const APP = {
             default:
                 console.warn("Something funky is going on here");
                 break;
-            // Case 0 is what happens when there is no media object
-            //I must refer to the documentation to understand what this means
             case 0:
+                // Case 0 is what happens when there is no media object
+                //I must refer to the documentation to understand what this means
                 break;
-            //When the Media object is Starting up
-            //we can initialize the progress bar and the ticker animation
-            //and also change the html elements to reflect the new song
-            //using the rebuildSongPage helper function to accomplish this
+            
             case 1:
+                //When the Media object is Starting up
+                //we can initialize the progress bar and the ticker animation
+                //and also change the html elements to reflect the new song
+                //using the rebuildSongPage helper function to accomplish this
                 APP.rebuildSongPage();
                 break;
-            //When the media objects starts running (playing)
-            //we can increment the progress bar here, while the ticker runs independantly
-            //or resume it based on the current progress of the song
+            
             case 2:
+                //When the media objects starts running (playing)
+                //we can increment the progress bar here, while the ticker runs independantly
+                //or resume it based on the current progress of the song
                 //set the interval for the ticker feature
                 APP.tickerTimeout = setInterval(APP.tickerFeature, 100);
                 APP.progressTimeout = setInterval(APP.progressBar, 400);
                 break;
-            //When the media Object Gets Paused we can suspend the ticker animation
+            
             case 3:
+                //When the media Object Gets Paused we can suspend the ticker animation
+                clearInterval(APP.tickerTimeout);
                 break;
-            //When the media obejct gets stopped, we could release the memory
+            
             case 4:
+                //When the media obejct gets stopped, we could release the memory
                 // if(APP.currentTrack) APP.currentTrack.release();
                 //clear the interval on the timeout when the song stops or is reloaded
                 clearInterval(APP.tickerTimeout);
