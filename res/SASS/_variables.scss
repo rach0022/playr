@@ -11,7 +11,7 @@ $text-bg: #543dbd;
 //shadowcolor is used to set all the drop shadow effects on the page
 //can be the same value as another variable just for ease of change 
 //I am making its own varaible
-$shadow-color: $brand-accent;
+$shadow-color: $text-bg;
 
 //using brand-color to generate a color pallette
 //from https://material.io/design/color/the-color-system.html#tools-for-picking-colors

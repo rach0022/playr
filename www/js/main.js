@@ -466,6 +466,9 @@ const APP = {
                 //and also change the html elements to reflect the new song
                 //using the rebuildSongPage helper function to accomplish this
                 APP.rebuildSongPage();
+
+                //also clear the intervals incase we are switching songs:
+                APP.clear_intervals();
                 break;
             
             case 2:
@@ -473,6 +476,7 @@ const APP = {
                 //we can increment the progress bar here, while the ticker runs independantly
                 //or resume it based on the current progress of the song
                 //set the interval for the ticker feature
+                APP.clear_intervals();
                 APP.tickerTimeout = setInterval(APP.tickerFeature, 50);
                 APP.progressTimeout = setInterval(APP.progressBar, 200);
                 break;
@@ -486,8 +490,7 @@ const APP = {
                 //When the media obejct gets stopped, we could release the memory
                 // if(APP.currentTrack) APP.currentTrack.release();
                 //clear the interval on the timeout when the song stops or is reloaded
-                clearInterval(APP.tickerTimeout);
-                clearInterval(APP.progressTimeout);
+                APP.clear_intervals();
                 //this case will run when either the song finishes or the APP.currentTrack.release() is run
                 if(APP.currentTrack.getDuration() !== -1){
                     APP.playNextSong();
@@ -630,25 +633,30 @@ const APP = {
 
     //function to "step forward" play the next song
     step_forward: function(){
-        if(APP.currentTrack) APP.playNextSong();
+        if(APP.currentTrack) {
+            APP.clear_intervals();
+            APP.playNextSong();
+        }
     },
 
     //function to "step backward" go to the previous
     step_backward: function(){
-        //first get a reference to the current index number of the song that was just played
-        let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
+        if(APP.currentTrack){
+            APP.clear_intervals();
+            //first get a reference to the current index number of the song that was just played
+            let index = APP.audio.findIndex(song => song.id === APP.currentTrack_info.id);
 
-        //then increment the index by one and check if it is still within the arry bound otherwise set to zero
-        index --;
-        if(index < 0) index = APP.audio.length - 1;
-        console.log(index);
+            //then increment the index by one and check if it is still within the arry bound otherwise set to zero
+            index --;
+            if(index < 0) index = APP.audio.length - 1;
+            console.log(index);
 
-        //since it is stopped we know that the song is released so just set the new
-        //currentsong_info and create the media (do not play the song yet)
-        APP.currentTrack_info = APP.audio[index];
-        console.log(APP.currentTrack_info);
-        APP.createMedia(APP.currentTrack_info);
-        APP.play();
+            //since it is stopped we know that the song is released so just set the new
+            //currentsong_info and create the media (do not play the song yet)
+            APP.currentTrack_info = APP.audio[index];
+            APP.createMedia(APP.currentTrack_info);
+            APP.play();
+        }
     },
 
     //callback function to seek to a different position in the song based on where the 
@@ -666,6 +674,13 @@ const APP = {
                 APP.currentTrack.seekTo(newPos*1000);
             }
         }
+    },
+
+    //helper function to clear intervals in the app so i dont have to keep
+    //writing these two lines
+    clear_intervals: function(){
+        clearInterval(APP.tickerTimeout);
+        clearInterval(APP.progressTimeout);
     }
 };
 
