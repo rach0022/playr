@@ -101,6 +101,7 @@ header{
             align-self: center;
             position: relative;
             top: -4px;
+            z-index: 2000;
             progress{
                 background-color: $text-bg;
                 width: 200px;

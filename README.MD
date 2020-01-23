@@ -28,6 +28,7 @@
 - [x] App design should reflect the Material Design guidelines
 - [x] Sort songs based on track name
 - [ ] Add Song Groups based on letter and display the title of each group (A-Z)
+- [x] Create a feature to skip to a new part in the song by clicking on the progress bar
 
 #### example of json data: 
 ```js

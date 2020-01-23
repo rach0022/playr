@@ -369,6 +369,9 @@ const APP = {
         document.getElementById('up-btn').addEventListener('click', APP.volumeUp);
         document.getElementById('down-btn').addEventListener('click', APP.volumeDown);
 
+        //event listener for the progress bar to jump to a new position in the song
+        document.querySelector('progress').addEventListener('click', APP.jump_position);
+
         //event listeners for the android system:
         document.addEventListener('pause',() =>{
             //when the android os pauses (suspends) this app it will release the media
@@ -634,6 +637,23 @@ const APP = {
         console.log(APP.currentTrack_info);
         APP.createMedia(APP.currentTrack_info);
         APP.play();
+    },
+
+    //callback function to seek to a different position in the song based on where the 
+    //progress bar is clicked it will be bound to the progress bar in setPlayrListeneres
+    //check the offsetX of the mouse event (where the mouse clicked relative to the element)
+    //and divide that by the max value of the bar (to get a percent) and multiply that by the duration
+    //if it is within range set that as the new song position (APP.currentTrack.seekto)
+    jump_position: ev => {
+        if(APP.currentTrack){
+            let bar = document.querySelector('progress');
+            let dur = APP.currentTrack.getDuration();
+            let newPos = (ev.offsetX / bar.clientWidth) * dur;
+            console.log(ev, ev.offsetX, dur, newPos);
+            if(newPos <= dur && dur != -1){
+                APP.currentTrack.seekTo(newPos*1000);
+            }
+        }
     }
 
 };

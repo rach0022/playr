@@ -124,6 +124,7 @@ header h3 em {
   align-self: center;
   position: relative;
   top: -4px;
+  z-index: 2000;
 }
 .player-controls .progress .progressbar progress {
   background-color: #543dbd;
