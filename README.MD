@@ -29,6 +29,8 @@
 - [x] Sort songs based on track name
 - [ ] Add Song Groups based on letter and display the title of each group (A-Z)
 - [x] Create a feature to skip to a new part in the song by clicking on the progress bar
+- [ ] Fix issue when pausing and starting the ticker bar keeps increasing in speed (possibly just need to clear timeout when paused)
+- [ ] Fix issue on android where splashscreen appears squished
 
 #### example of json data: 
 ```js
